@@ -1,0 +1,14 @@
+# Arquivos de cache e configurações locais do Godot 4
+.godot/
+
+# Exceção: manter lista de extensões
+!.godot/extension_list.cfg
+
+# Diretórios de exportação do jogo final
+export/
+builds/
+/bin/
+
+# Arquivos de metadados de Sistemas Operacionais
+.DS_Store
+Thumbs.db
