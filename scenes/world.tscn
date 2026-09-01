@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pqc1qi0tj223"]
 
 [ext_resource type="PackedScene" uid="uid://k4l4cem25ra1" path="res://scenes/Player.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://cfjvvso8al50g" path="res://scenes/antidoto.tscn" id="2_rwgxs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snp6e"]
 size = Vector2(1153, 11)
@@ -43,3 +44,6 @@ shape = SubResource("RectangleShape2D_wlwps")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parede_Dir" unique_id=284139546]
 position = Vector2(1162.75, 323.5)
 shape = SubResource("RectangleShape2D_13mlu")
+
+[node name="Antidoto" parent="." unique_id=1307615855 instance=ExtResource("2_rwgxs")]
+position = Vector2(873, 121)
