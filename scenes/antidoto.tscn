@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cfjvvso8al50g"]
+
+[ext_resource type="Script" uid="uid://c70kq3id7lwsu" path="res://scripts/antidoto.gd" id="1_io8bx"]
+[ext_resource type="Texture2D" uid="uid://c3n21xv1tocil" path="res://icon.svg" id="1_sgq8w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_snp6e"]
+
+[node name="Antidoto" type="Area2D" unique_id=1307615855]
+script = ExtResource("1_io8bx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472397336]
+modulate = Color(0.2616427, 0.989355, 0.42065853, 1)
+position = Vector2(1, 0)
+scale = Vector2(0.10156248, 0.10937501)
+texture = ExtResource("1_sgq8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1338927591]
+shape = SubResource("CircleShape2D_snp6e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
