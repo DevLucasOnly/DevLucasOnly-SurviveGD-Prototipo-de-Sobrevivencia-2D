@@ -17,7 +17,7 @@ size = Vector2(12.5, 671)
 [node name="World" type="Node2D" unique_id=2064019119]
 
 [node name="Player" parent="." unique_id=1449373304 instance=ExtResource("1_nnsk1")]
-position = Vector2(559, 320)
+position = Vector2(568, 316)
 
 [node name="Parede_Topo" type="StaticBody2D" parent="." unique_id=15322827]
 
