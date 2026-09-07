@@ -395,4 +395,16 @@ position = Vector2(1525.5, -7)
 shape = SubResource("RectangleShape2D_13mlu")
 
 [node name="Antidoto" parent="." unique_id=1307615855 instance=ExtResource("2_rwgxs")]
-position = Vector2(530, -148)
+position = Vector2(171, -46)
+
+[node name="Antidoto4" parent="." unique_id=481847473 instance=ExtResource("2_rwgxs")]
+position = Vector2(385, -51)
+
+[node name="Antidoto5" parent="." unique_id=315334521 instance=ExtResource("2_rwgxs")]
+position = Vector2(287, -53)
+
+[node name="Antidoto3" parent="." unique_id=1136559249 instance=ExtResource("2_rwgxs")]
+position = Vector2(387, 76)
+
+[node name="Antidoto2" parent="." unique_id=1486236005 instance=ExtResource("2_rwgxs")]
+position = Vector2(151, 76)

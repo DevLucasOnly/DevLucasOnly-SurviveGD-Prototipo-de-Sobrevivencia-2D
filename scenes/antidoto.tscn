@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://cfjvvso8al50g"]
 
 [ext_resource type="Script" uid="uid://c70kq3id7lwsu" path="res://scripts/antidoto.gd" id="1_io8bx"]
-[ext_resource type="Texture2D" uid="uid://c3n21xv1tocil" path="res://icon.svg" id="1_sgq8w"]
+[ext_resource type="Texture2D" uid="uid://bf0od6r1cl8t6" path="res://assets/Tress Free Acess/PNG/Assets_separately/Trees/Fruit_tree1.png" id="2_io8bx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snp6e"]
+radius = 4.0
 
 [node name="Antidoto" type="Area2D" unique_id=1307615855]
 script = ExtResource("1_io8bx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472397336]
-modulate = Color(0.2616427, 0.989355, 0.42065853, 1)
-position = Vector2(1, 0)
-scale = Vector2(0.10156248, 0.10937501)
-texture = ExtResource("1_sgq8w")
+position = Vector2(8.940697e-08, 0)
+scale = Vector2(0.10937501, 0.10937501)
+texture = ExtResource("2_io8bx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1338927591]
 shape = SubResource("CircleShape2D_snp6e")
