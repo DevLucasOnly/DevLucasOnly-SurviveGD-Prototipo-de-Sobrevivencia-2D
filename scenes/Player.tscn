@@ -62,3 +62,4 @@ libraries/ = SubResource("AnimationLibrary_qu4a1")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2015322001]
 zoom = Vector2(2, 2)
+position_smoothing_speed = 10.0
