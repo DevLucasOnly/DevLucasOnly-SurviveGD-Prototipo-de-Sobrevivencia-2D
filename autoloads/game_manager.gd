@@ -31,3 +31,8 @@ func restaurar_humanidade(quantidade: float) -> void:
 	if humanidade_atual > 0.0:
 		humanidade_atual = clamp(humanidade_atual + quantidade, 0.0, humanidade_maxima)
 		humanidade_alterada.emit(humanidade_atual)
+
+func resetar_estado() -> void:
+	humanidade_atual = humanidade_maxima
+	tempo_sobrevivencia = 0.0
+	set_process(true)
