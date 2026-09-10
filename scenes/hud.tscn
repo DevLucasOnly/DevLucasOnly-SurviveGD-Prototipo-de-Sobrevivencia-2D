@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://mw2cyrq3rjtf" path="res://scripts/hud.gd" id="1_ahhtf"]
 
 [node name="HUD" type="CanvasLayer" unique_id=913610252]
+process_mode = 3
 script = ExtResource("1_ahhtf")
 
 [node name="BarraHumanidade" type="ProgressBar" parent="." unique_id=716565313]
