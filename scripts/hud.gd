@@ -1,11 +1,22 @@
-extends Node
+extends CanvasLayer
 
+@onready var barra_humanidade: ProgressBar = $BarraHumanidade
+@onready var tempo_label: Label = $TempoLabel
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# Define os valores iniciais na inicialização
+	barra_humanidade.max_value = GameManager.humanidade_maxima
+	barra_humanidade.value = GameManager.humanidade_atual
+	
+	# Conecta os sinais do Singleton às funções locais do HUD
+	GameManager.humanidade_alterada.connect(_atualizar_barra)
+	GameManager.tempo_atualizado.connect(_atualizar_tempo)
 
+func _atualizar_barra(valor: float) -> void:
+	barra_humanidade.value = valor
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _atualizar_tempo(tempo_segundos: int) -> void:
+	# Formata o valor inteiro para o formato MM:SS
+	var minutos = tempo_segundos / 60
+	var segundos = tempo_segundos % 60
+	tempo_label.text = "%02d:%02d" % [minutos, segundos]

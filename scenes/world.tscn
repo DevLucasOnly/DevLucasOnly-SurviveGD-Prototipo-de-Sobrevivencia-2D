@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://k4l4cem25ra1" path="res://scenes/Player.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://cfjvvso8al50g" path="res://scenes/antidoto.tscn" id="2_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://dhe5j334w1dr5" path="res://assets/Tiles/Background_Bleak-Yellow_TileSet.png" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://bd4brpl4s26hh" path="res://scenes/hud.tscn" id="4_k0juu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k0juu"]
 texture = ExtResource("3_4wyf3")
@@ -408,3 +409,5 @@ position = Vector2(387, 76)
 
 [node name="Antidoto2" parent="." unique_id=1486236005 instance=ExtResource("2_rwgxs")]
 position = Vector2(151, 76)
+
+[node name="HUD" parent="." unique_id=913610252 instance=ExtResource("4_k0juu")]

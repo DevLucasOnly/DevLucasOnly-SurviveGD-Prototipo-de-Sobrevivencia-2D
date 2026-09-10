@@ -1,3 +1,18 @@
 [gd_scene format=3 uid="uid://bd4brpl4s26hh"]
 
+[ext_resource type="Script" uid="uid://5umlooeytudv" path="res://scenes/hud.gd" id="1_ahhtf"]
+
 [node name="HUD" type="CanvasLayer" unique_id=913610252]
+script = ExtResource("1_ahhtf")
+
+[node name="BarraHumanidade" type="ProgressBar" parent="." unique_id=716565313]
+offset_right = 239.0
+offset_bottom = 27.0
+show_percentage = false
+
+[node name="TempoLabel" type="Label" parent="." unique_id=1135590263]
+offset_left = 285.0
+offset_top = -1.0
+offset_right = 327.0
+offset_bottom = 22.0
+text = "00:00"
