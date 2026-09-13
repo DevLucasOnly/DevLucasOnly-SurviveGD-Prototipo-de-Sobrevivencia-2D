@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d0ia02vg4l1mu"]
+
+[ext_resource type="Texture2D" uid="uid://c3n21xv1tocil" path="res://icon.svg" id="1_pt50e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_snp6e"]
+radius = 17.029387
+
+[node name="Inimigo" type="CharacterBody2D" unique_id=1514004947]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1055419145]
+position = Vector2(-2.2888184e-05, 0)
+scale = Vector2(0.28515625, 0.24218756)
+texture = ExtResource("1_pt50e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66543122]
+shape = SubResource("CircleShape2D_snp6e")
