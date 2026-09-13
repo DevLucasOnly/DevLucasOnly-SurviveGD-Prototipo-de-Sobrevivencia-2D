@@ -434,3 +434,7 @@ position = Vector2(-664, 296)
 
 [node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=1301632930]
 position = Vector2(-546, 429)
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=971247218]
+wait_time = 4.0
+autostart = true
