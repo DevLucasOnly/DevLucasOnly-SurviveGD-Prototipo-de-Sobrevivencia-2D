@@ -43,7 +43,7 @@ _data = {
 &"walk": SubResource("Animation_mdl7e")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1449373304]
+[node name="Player" type="CharacterBody2D" unique_id=1449373304 groups=["jogador"]]
 script = ExtResource("1_i0ldb")
 speed = 150.0
 
