@@ -413,3 +413,24 @@ position = Vector2(151, 76)
 [node name="HUD" parent="." unique_id=913610252 instance=ExtResource("4_k0juu")]
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1937644198]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1878521044]
+position = Vector2(-616, 422)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPoints" unique_id=495618332]
+position = Vector2(-219, 139)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints" unique_id=767965712]
+position = Vector2(-421, 199)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints" unique_id=1746442954]
+position = Vector2(-641, 169)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1409334722]
+position = Vector2(-749, 309)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=188820962]
+position = Vector2(-664, 296)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=1301632930]
+position = Vector2(-546, 429)
