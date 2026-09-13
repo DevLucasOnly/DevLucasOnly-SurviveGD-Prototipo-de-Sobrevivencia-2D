@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://d0ia02vg4l1mu"]
 
+[ext_resource type="Script" uid="uid://wfqrpt5pipi3" path="res://scripts/inimigo.gd" id="1_61lki"]
 [ext_resource type="Texture2D" uid="uid://c3n21xv1tocil" path="res://icon.svg" id="1_pt50e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snp6e"]
 radius = 17.029387
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1514004947]
+script = ExtResource("1_61lki")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1055419145]
 position = Vector2(-2.2888184e-05, 0)
