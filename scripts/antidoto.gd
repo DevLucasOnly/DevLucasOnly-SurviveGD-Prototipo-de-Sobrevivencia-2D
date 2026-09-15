@@ -4,13 +4,13 @@ extends Area2D
 
 # Esta função será chamada automaticamente pelo sinal 'body_entered'
 func _on_body_entered(body: Node2D) -> void:
-	# Verifica se a entidade colidida possui a propriedade 'humanidade'
-	if "humanidade" in body:
-		# Soma o valor da cura, garantindo que não ultrapasse o limite de 100
-		body.humanidade = min(body.humanidade + cura_valor, 100.0)
+	# Verifica se a entidade colidida é o jogador
+	if body.name == "Player":
+		# Envia o valor da cura para o script global gerenciar
+		GameManager.restaurar_humanidade(cura_valor)
 		
 		# Opcional: print para depuração no console
-		print("Antidoto coletado. Humanidade atual: ", body.humanidade)
+		print("Antídoto coletado. Cura enviada: ", cura_valor)
 		
 		# Remove o item da árvore de cenas e libera a memória
 		queue_free()
