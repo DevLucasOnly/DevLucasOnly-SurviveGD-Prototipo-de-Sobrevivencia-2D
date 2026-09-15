@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://pqc1qi0tj223"]
 
+[ext_resource type="Script" uid="uid://dkmj5t8lugb5k" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://k4l4cem25ra1" path="res://scenes/Player.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://cfjvvso8al50g" path="res://scenes/antidoto.tscn" id="2_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://dhe5j334w1dr5" path="res://assets/Tiles/Background_Bleak-Yellow_TileSet.png" id="3_4wyf3"]
@@ -360,6 +361,8 @@ size = Vector2(35, 2012)
 size = Vector2(43, 2012)
 
 [node name="World" type="Node2D" unique_id=2064019119]
+script = ExtResource("1_71j4m")
+antidoto_cena = ExtResource("2_rwgxs")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1401316586]
 position = Vector2(-2, 0)
@@ -411,3 +414,140 @@ position = Vector2(387, 76)
 position = Vector2(151, 76)
 
 [node name="HUD" parent="." unique_id=913610252 instance=ExtResource("4_k0juu")]
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1937644198]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1878521044]
+position = Vector2(-599, 505)
+
+[node name="Marker2D44" type="Marker2D" parent="SpawnPoints" unique_id=98161863]
+position = Vector2(1289, -803)
+
+[node name="Marker2D43" type="Marker2D" parent="SpawnPoints" unique_id=405237722]
+position = Vector2(278, -800)
+
+[node name="Marker2D42" type="Marker2D" parent="SpawnPoints" unique_id=1164719773]
+position = Vector2(-392, -666)
+
+[node name="Marker2D41" type="Marker2D" parent="SpawnPoints" unique_id=1281537962]
+position = Vector2(1335, -16)
+
+[node name="Marker2D40" type="Marker2D" parent="SpawnPoints" unique_id=2130331533]
+position = Vector2(903, 42)
+
+[node name="Marker2D39" type="Marker2D" parent="SpawnPoints" unique_id=318270742]
+position = Vector2(565, 208)
+
+[node name="Marker2D38" type="Marker2D" parent="SpawnPoints" unique_id=57806079]
+position = Vector2(154, 246)
+
+[node name="Marker2D37" type="Marker2D" parent="SpawnPoints" unique_id=1687167920]
+position = Vector2(875, 308)
+
+[node name="Marker2D36" type="Marker2D" parent="SpawnPoints" unique_id=227582109]
+position = Vector2(851, -455)
+
+[node name="Marker2D35" type="Marker2D" parent="SpawnPoints" unique_id=647329761]
+position = Vector2(1307, -237)
+
+[node name="Marker2D34" type="Marker2D" parent="SpawnPoints" unique_id=857907221]
+position = Vector2(1127, -524)
+
+[node name="Marker2D33" type="Marker2D" parent="SpawnPoints" unique_id=503700134]
+position = Vector2(910, -766)
+
+[node name="Marker2D32" type="Marker2D" parent="SpawnPoints" unique_id=2095197807]
+position = Vector2(578, -634)
+
+[node name="Marker2D31" type="Marker2D" parent="SpawnPoints" unique_id=1768312283]
+position = Vector2(900, -196)
+
+[node name="Marker2D30" type="Marker2D" parent="SpawnPoints" unique_id=1321907890]
+position = Vector2(1120, 736)
+
+[node name="Marker2D29" type="Marker2D" parent="SpawnPoints" unique_id=1393637258]
+position = Vector2(-216, 736)
+
+[node name="Marker2D28" type="Marker2D" parent="SpawnPoints" unique_id=1627959636]
+position = Vector2(-626, 733)
+
+[node name="Marker2D27" type="Marker2D" parent="SpawnPoints" unique_id=1548106599]
+position = Vector2(1193, 377)
+
+[node name="Marker2D26" type="Marker2D" parent="SpawnPoints" unique_id=847213973]
+position = Vector2(768, 519)
+
+[node name="Marker2D25" type="Marker2D" parent="SpawnPoints" unique_id=2117795593]
+position = Vector2(572, 684)
+
+[node name="Marker2D24" type="Marker2D" parent="SpawnPoints" unique_id=1434061498]
+position = Vector2(506, -286)
+
+[node name="Marker2D23" type="Marker2D" parent="SpawnPoints" unique_id=186601321]
+position = Vector2(203, -545)
+
+[node name="Marker2D22" type="Marker2D" parent="SpawnPoints" unique_id=1064420156]
+position = Vector2(147, -258)
+
+[node name="Marker2D21" type="Marker2D" parent="SpawnPoints" unique_id=33955486]
+position = Vector2(-157, -717)
+
+[node name="Marker2D20" type="Marker2D" parent="SpawnPoints" unique_id=1210664958]
+position = Vector2(-730, -769)
+
+[node name="Marker2D19" type="Marker2D" parent="SpawnPoints" unique_id=1654429147]
+position = Vector2(-636, -423)
+
+[node name="Marker2D18" type="Marker2D" parent="SpawnPoints" unique_id=851856269]
+position = Vector2(-261, -372)
+
+[node name="Marker2D17" type="Marker2D" parent="SpawnPoints" unique_id=1459823167]
+position = Vector2(-443, -148)
+
+[node name="Marker2D16" type="Marker2D" parent="SpawnPoints" unique_id=401640642]
+position = Vector2(-761, -120)
+
+[node name="Marker2D15" type="Marker2D" parent="SpawnPoints" unique_id=619370611]
+position = Vector2(341, 513)
+
+[node name="Marker2D14" type="Marker2D" parent="SpawnPoints" unique_id=2060336674]
+position = Vector2(224, 715)
+
+[node name="Marker2D13" type="Marker2D" parent="SpawnPoints" unique_id=744753012]
+position = Vector2(-210, 341)
+
+[node name="Marker2D12" type="Marker2D" parent="SpawnPoints" unique_id=1093009521]
+position = Vector2(296, -132)
+
+[node name="Marker2D11" type="Marker2D" parent="SpawnPoints" unique_id=570876075]
+position = Vector2(497, -29)
+
+[node name="Marker2D10" type="Marker2D" parent="SpawnPoints" unique_id=1379557680]
+position = Vector2(-17, 168)
+
+[node name="Marker2D9" type="Marker2D" parent="SpawnPoints" unique_id=15956781]
+position = Vector2(-142, -56)
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPoints" unique_id=2025774304]
+position = Vector2(97, -8)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPoints" unique_id=495618332]
+position = Vector2(-219, 139)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints" unique_id=767965712]
+position = Vector2(-421, 199)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints" unique_id=1746442954]
+position = Vector2(-641, 169)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1409334722]
+position = Vector2(-784, 381)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=188820962]
+position = Vector2(-547, 265)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=1301632930]
+position = Vector2(-349, 501)
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=971247218]
+autostart = true
