@@ -55,4 +55,5 @@ func _on_humanidade_alterada(valor: float) -> void:
 	pass 
 
 func _on_game_over() -> void:
+	print("[DEBUG] Player recebeu game_over")
 	estado_atual = Estado.DEAD
