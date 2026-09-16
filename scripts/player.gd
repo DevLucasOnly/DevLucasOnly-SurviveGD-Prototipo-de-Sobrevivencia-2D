@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 				sprite.flip_h = velocity.x < 0
 		else:
 			anim.play("idle")
-			
+			pass
 	else:
 		# Bloqueia a movimentação e força animação base caso a energia zere
 		velocity = Vector2.ZERO

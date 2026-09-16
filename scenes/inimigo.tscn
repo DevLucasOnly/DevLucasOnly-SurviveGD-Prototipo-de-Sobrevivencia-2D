@@ -7,6 +7,7 @@
 radius = 8.0
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1514004947]
+motion_mode = 1
 script = ExtResource("1_61lki")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1055419145]
