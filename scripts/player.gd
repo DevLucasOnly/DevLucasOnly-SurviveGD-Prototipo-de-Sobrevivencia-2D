@@ -35,10 +35,6 @@ func _physics_process(_delta: float) -> void:
 			_estado_dead()
 	
 	move_and_slide()
-	
-	# Gatilho temporário para validação da Issue #11
-	if Input.is_action_just_pressed("ui_accept"):
-		acionar_feedback_dano()
 
 func _estado_idle() -> void:
 	velocity = Vector2.ZERO
@@ -77,3 +73,10 @@ func _on_humanidade_alterada(_valor: float) -> void:
 
 func _on_game_over() -> void:
 	estado_atual = Estado.DEAD
+
+func receber_dano(quantidade: float) -> void:
+	if estado_atual == Estado.DEAD:
+		return
+
+	GameManager.humanidade_atual -= quantidade
+	acionar_feedback_dano()
