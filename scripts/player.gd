@@ -7,16 +7,25 @@ var estado_atual: Estado = Estado.IDLE
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var camera: Camera2D = $Camera2D
+
+var shake_intensity: float = 0.0
+const SHAKE_DECAY: float = 10.0
 
 func _ready() -> void:
 	# Conecta os sinais do Autoload às funções locais
 	GameManager.humanidade_alterada.connect(_on_humanidade_alterada)
 	GameManager.game_over.connect(_on_game_over)
 
+func _process(delta: float) -> void:
+	# Controle do decaimento do Camera Shake
+	if shake_intensity > 0:
+		shake_intensity = lerpf(shake_intensity, 0.0, SHAKE_DECAY * delta)
+		camera.offset = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * shake_intensity
+	else:
+		camera.offset = Vector2.ZERO
+
 func _physics_process(_delta: float) -> void:
-
-	print("Estado atual: ", estado_atual)
-
 	match estado_atual:
 		Estado.IDLE:
 			_estado_idle()
@@ -26,6 +35,10 @@ func _physics_process(_delta: float) -> void:
 			_estado_dead()
 	
 	move_and_slide()
+	
+	# Gatilho temporário para validação da Issue #11
+	if Input.is_action_just_pressed("ui_accept"):
+		acionar_feedback_dano()
 
 func _estado_idle() -> void:
 	velocity = Vector2.ZERO
@@ -50,10 +63,17 @@ func _estado_dead() -> void:
 	velocity = Vector2.ZERO
 	anim.play("idle")
 
-func _on_humanidade_alterada(valor: float) -> void:
-	# Mantido para debugar a humanidade, caso necessário
+func acionar_feedback_dano() -> void:
+	# Aplica Camera Shake
+	shake_intensity = 15.0
+	
+	# Aplica Freeze Frame
+	Engine.time_scale = 0.0
+	await get_tree().create_timer(0.05, true, false, true).timeout
+	Engine.time_scale = 1.0
+
+func _on_humanidade_alterada(_valor: float) -> void:
 	pass 
 
 func _on_game_over() -> void:
-	print("[DEBUG] Player recebeu game_over")
 	estado_atual = Estado.DEAD
