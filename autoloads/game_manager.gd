@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 		tempo_atualizado.emit(int(tempo_sobrevivencia))
 	elif humanidade_atual <= 0.0:
 		humanidade_atual = 0.0
+		print("[DEBUG] GameManager emitiu game_over")
 		game_over.emit()
 		set_process(false) # Interrompe o loop ao zerar a humanidade
 
