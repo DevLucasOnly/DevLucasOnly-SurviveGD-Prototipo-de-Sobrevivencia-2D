@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 @onready var sfx_player: AudioStreamPlayer2D = $SFXPlayer
-@onready var sprite: Sprite2D = $Sprite2D # Certifique-se de que o nó da imagem se chama exatamente "Sprite2D"
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var anim: AnimationPlayer = $AnimationPlayer # Nova referência
 
 @export var velocidade: float = 120.0
 @export var vida_maxima: int = 3
@@ -22,10 +23,23 @@ func _physics_process(_delta: float) -> void:
 		# Gatilho: Toca o som de movimento enquanto possui velocidade
 		if velocity != Vector2.ZERO:
 			acionar_som_sfx()
+			atualizar_direcao_visual() # Atualiza o sprite baseado na perseguição
 	else:
 		velocity = Vector2.ZERO
 		# Para o som imediatamente se o inimigo parar de se mover
 		sfx_player.stop()
+
+func atualizar_direcao_visual() -> void:
+	# Define a animação com base no eixo dominante da velocidade
+	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			anim.play("right")
+		else:
+			anim.play("left")
+	elif velocity.y > 0:
+		anim.play("down")
+	else:
+		anim.play("up")
 
 func acionar_som_sfx() -> void:
 	if not sfx_player.playing:
