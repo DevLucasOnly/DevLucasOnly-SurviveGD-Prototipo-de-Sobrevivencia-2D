@@ -23,7 +23,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_v6fml"]
 resource_name = "idle_down"
-length = 0.39999999999999997
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -40,7 +40,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mdl7e"]
 resource_name = "idle_side"
-length = 0.39999999999999997
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -57,7 +57,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_70d11"]
 resource_name = "idle_up"
-length = 0.39999999999999997
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -159,3 +159,6 @@ libraries/ = SubResource("AnimationLibrary_qu4a1")
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=518234097]
+position = Vector2(-3, 0)
