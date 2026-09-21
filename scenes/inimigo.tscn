@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wfqrpt5pipi3" path="res://scripts/inimigo.gd" id="1_61lki"]
 [ext_resource type="Texture2D" uid="uid://c3n21xv1tocil" path="res://icon.svg" id="1_pt50e"]
+[ext_resource type="AudioStream" uid="uid://wppj87tyfxpc" path="res://audio/Insectoide_Passos_Loop.wav" id="3_21tsg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snp6e"]
 radius = 8.0
@@ -16,3 +17,7 @@ texture = ExtResource("1_pt50e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66543122]
 shape = SubResource("CircleShape2D_snp6e")
+
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="." unique_id=78537594]
+stream = ExtResource("3_21tsg")
+attenuation = 800.0
