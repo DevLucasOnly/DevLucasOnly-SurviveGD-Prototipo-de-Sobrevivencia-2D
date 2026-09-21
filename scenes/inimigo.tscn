@@ -20,4 +20,4 @@ shape = SubResource("CircleShape2D_snp6e")
 
 [node name="SFXPlayer" type="AudioStreamPlayer2D" parent="." unique_id=78537594]
 stream = ExtResource("3_21tsg")
-attenuation = 800.0
+max_distance = 400.0
