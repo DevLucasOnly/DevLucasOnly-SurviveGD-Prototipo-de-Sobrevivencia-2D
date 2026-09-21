@@ -4,12 +4,14 @@ enum Estado {IDLE, MOVE, DEAD}
 var estado_atual: Estado = Estado.IDLE
 var direcao_atual: String = "down" # Registra a última direção ("down", "up", "side")
 
+@export var vida_maxima: int = 3
 @export var speed: float = 300.0
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
 
+var vida_atual: int
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
 
