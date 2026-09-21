@@ -5,10 +5,12 @@ var estado_atual: Estado = Estado.IDLE
 var direcao_atual: String = "down" # Registra a última direção ("down", "up", "side")
 
 @export var speed: float = 300.0
+@export var projetil_cena: PackedScene # Nova variável para a cena do projétil
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
+@onready var muzzle: Marker2D = $Muzzle # Novo nó para o ponto de origem do disparo
 
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
@@ -17,6 +19,10 @@ func _ready() -> void:
 	# Conecta os sinais do Autoload às funções locais
 	GameManager.humanidade_alterada.connect(_on_humanidade_alterada)
 	GameManager.game_over.connect(_on_game_over)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("atirar") and estado_atual != Estado.DEAD:
+		atirar()
 
 func _process(delta: float) -> void:
 	# Controle do decaimento do Camera Shake
@@ -69,6 +75,24 @@ func _estado_move() -> void:
 func _estado_dead() -> void:
 	velocity = Vector2.ZERO
 	anim.play("idle_down")
+
+func atirar() -> void:
+	if projetil_cena == null:
+		print("[ERRO] Cena do projétil não atribuída no Inspector do Player.")
+		return
+		
+	var tiro = projetil_cena.instantiate()
+	# Adiciona o tiro à cena principal, não como filho do player
+	get_tree().current_scene.add_child(tiro) 
+	
+	tiro.global_position = muzzle.global_position
+	
+	# Calcula a direção vetorial do jogador até o rato
+	var direcao_mouse = (get_global_mouse_position() - global_position).normalized()
+	tiro.direction = direcao_mouse
+	
+	# Roda o sprite da bala para alinhar com a trajetória
+	tiro.rotation = direcao_mouse.angle()
 
 func acionar_feedback_dano() -> void:
 	# Aplica Camera Shake
