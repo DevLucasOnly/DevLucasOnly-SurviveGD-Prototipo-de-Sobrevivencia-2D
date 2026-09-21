@@ -4,14 +4,12 @@ enum Estado {IDLE, MOVE, DEAD}
 var estado_atual: Estado = Estado.IDLE
 var direcao_atual: String = "down" # Registra a última direção ("down", "up", "side")
 
-@export var vida_maxima: int = 3
 @export var speed: float = 300.0
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
 
-var vida_atual: int
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
 
@@ -87,9 +85,10 @@ func _on_humanidade_alterada(_valor: float) -> void:
 func _on_game_over() -> void:
 	estado_atual = Estado.DEAD
 
-func receber_dano(quantidade: float) -> void:
+func receber_dano(quantidade: int) -> void:
 	if estado_atual == Estado.DEAD:
 		return
 
-	GameManager.humanidade_atual -= quantidade
+	# Delega a dedução de vida e checagem de morte para o GameManager
+	GameManager.aplicar_dano_jogador(quantidade)
 	acionar_feedback_dano()
