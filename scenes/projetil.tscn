@@ -1,3 +1,23 @@
 [gd_scene format=3 uid="uid://dujdbk5baxpvi"]
 
-[node name="Area2D" type="Area2D" unique_id=1582131438]
+[ext_resource type="Script" uid="uid://b3ndq8f0y4fxy" path="res://scripts/projetil.gd" id="1_ri8ot"]
+[ext_resource type="Texture2D" uid="uid://bxh8k2kcdxc2k" path="res://assets/Player/insectoides.png" id="2_qdcue"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_snp6e"]
+radius = 6.311075
+height = 33.479797
+
+[node name="Projetil" type="Area2D" unique_id=1582131438]
+script = ExtResource("1_ri8ot")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=555198599]
+texture = ExtResource("2_qdcue")
+region_enabled = true
+region_rect = Rect2(165.58984, 1108.6667, 132.51282, 118.871826)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1975144572]
+position = Vector2(14, -2)
+scale = Vector2(6.0211606, 0.7765878)
+shape = SubResource("CapsuleShape2D_snp6e")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=8279991]
