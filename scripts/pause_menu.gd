@@ -24,4 +24,4 @@ func _on_continuar_pressed() -> void:
 func _on_sair_pressed() -> void:
 	get_tree().paused = false
 	GameManager.resetar_estado() # Garante que as variáveis de humanidade sejam reiniciadas
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
