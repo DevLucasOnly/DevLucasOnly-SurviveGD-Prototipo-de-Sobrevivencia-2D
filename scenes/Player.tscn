@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://k4l4cem25ra1"]
 
 [ext_resource type="Script" uid="uid://c7m4o7cacraer" path="res://scripts/player.gd" id="1_i0ldb"]
+[ext_resource type="PackedScene" uid="uid://dujdbk5baxpvi" path="res://scenes/projetil.tscn" id="2_3li8b"]
 [ext_resource type="Texture2D" uid="uid://bxh8k2kcdxc2k" path="res://assets/Player/insectoides.png" id="2_v6fml"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70d11"]
@@ -137,6 +138,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" unique_id=1449373304 groups=["jogador"]]
 script = ExtResource("1_i0ldb")
 speed = 80.0
+projetil_cena = ExtResource("2_3li8b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=691460397]
 position = Vector2(0, 2.3841858e-07)
