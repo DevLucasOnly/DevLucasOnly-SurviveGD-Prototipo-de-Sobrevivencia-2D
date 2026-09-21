@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxh8k2kcdxc2k"
-path="res://.godot/imported/insectoides.png-04cd9c4bd3020dfd5515ab0b468f7272.ctex"
+uid="uid://cvl00sgmmkqun"
+path="res://.godot/imported/nova sprite mapa.png-d83688bd8b4a054cbb54ec1412bff116.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player/insectoides.png"
-dest_files=["res://.godot/imported/insectoides.png-04cd9c4bd3020dfd5515ab0b468f7272.ctex"]
+source_file="res://assets/Mapa/nova sprite mapa.png"
+dest_files=["res://.godot/imported/nova sprite mapa.png-d83688bd8b4a054cbb54ec1412bff116.ctex"]
 
 [params]
 
