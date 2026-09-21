@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 enum Estado {IDLE, MOVE, DEAD}
 var estado_atual: Estado = Estado.IDLE
+var direcao_atual: String = "down" # Registra a última direção ("down", "up", "side")
 
 @export var speed: float = 300.0
 
@@ -38,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 
 func _estado_idle() -> void:
 	velocity = Vector2.ZERO
-	anim.play("idle")
+	anim.play("idle_" + direcao_atual)
 	
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if input_direction != Vector2.ZERO:
@@ -51,13 +52,23 @@ func _estado_move() -> void:
 	if velocity == Vector2.ZERO:
 		estado_atual = Estado.IDLE
 	else:
-		anim.play("walk")
-		if velocity.x != 0:
-			sprite.flip_h = velocity.x < 0
+		# Define a animação com base no eixo dominante
+		if abs(velocity.x) > abs(velocity.y):
+			direcao_atual = "side"
+			anim.play("walk_side")
+			sprite.flip_h = velocity.x < 0 # Espelha se estiver indo para a esquerda
+		elif velocity.y > 0:
+			direcao_atual = "down"
+			anim.play("walk_down")
+			sprite.flip_h = false # Garante que a frente/costas não fiquem espelhadas
+		else:
+			direcao_atual = "up"
+			anim.play("walk_up")
+			sprite.flip_h = false # Garante que a frente/costas não fiquem espelhadas
 
 func _estado_dead() -> void:
 	velocity = Vector2.ZERO
-	anim.play("idle")
+	anim.play("idle_down")
 
 func acionar_feedback_dano() -> void:
 	# Aplica Camera Shake
