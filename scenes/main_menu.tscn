@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c5eboavo5wepl"]
+
+[ext_resource type="Script" uid="uid://gqjxgvtpni8u" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://dmcal5fg4ko4g" path="res://audio/Ultimo_Sinal_SurviveGD.ogg" id="2_ekxnf"]
+
+[node name="MainMenu" type="Control" unique_id=1891710739]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_l6cm7")
+
+[node name="BtnJogar" type="Button" parent="." unique_id=735362518]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 266.0
+offset_top = 131.0
+offset_right = 372.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Iniciar Game"
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="." unique_id=1855869937]
+stream = ExtResource("2_ekxnf")
+autoplay = true
