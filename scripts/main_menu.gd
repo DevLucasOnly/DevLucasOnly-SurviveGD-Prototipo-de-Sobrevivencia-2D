@@ -5,6 +5,7 @@ extends Control
 @onready var btn_sair = $BotoesContainer/BtnSair
 
 func _on_btn_jogar_pressed() -> void:
+	GameManager.resetar_estado()
 	get_tree().change_scene_to_file("res://scenes/world.tscn")
 
 func _on_btn_opcoes_pressed() -> void:
