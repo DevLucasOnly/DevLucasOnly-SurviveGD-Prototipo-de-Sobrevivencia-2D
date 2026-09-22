@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bd4brpl4s26hh" path="res://scenes/hud.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://d0ia02vg4l1mu" path="res://scenes/inimigo.tscn" id="6_qfnet"]
 [ext_resource type="Script" uid="uid://2y327late8of" path="res://scripts/pause_menu.gd" id="7_i7141"]
+[ext_resource type="Texture2D" uid="uid://bnv7fky8vgaxd" path="res://assets/Menu/BotaoPausa.png" id="9_7r4gi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7kh3"]
 texture = ExtResource("3_4mrxx")
@@ -6612,6 +6613,14 @@ size = Vector2(35, 2012)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13mlu"]
 size = Vector2(43, 2012)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_snp6e"]
+atlas = ExtResource("9_7r4gi")
+region = Rect2(233.90091, 78.05789, 1303.6995, 310.64218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8bbj"]
+atlas = ExtResource("9_7r4gi")
+region = Rect2(235.56635, 490.43817, 1303.3416, 312.78522)
+
 [node name="World" type="Node2D" unique_id=2064019119]
 script = ExtResource("1_71j4m")
 antidoto_cena = ExtResource("2_rwgxs")
@@ -6823,21 +6832,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.9254902)
 metadata/_edit_use_anchors_ = true
 
-[node name="BtnContinuar" type="Button" parent="PauseMenu/ColorRect" unique_id=21416253]
-layout_mode = 0
-offset_left = 145.0
-offset_top = 153.0
-offset_right = 224.0
-offset_bottom = 214.0
-text = "Continue"
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=1598895639]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.14994444
+anchor_right = 0.5
+anchor_bottom = 0.14994444
+offset_left = -104.0
+offset_top = 91.020004
+offset_right = 103.66
+offset_bottom = 162.02
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="BtnSair" type="Button" parent="PauseMenu/ColorRect" unique_id=1367777074]
-layout_mode = 0
-offset_left = 441.0
-offset_top = 154.0
-offset_right = 532.0
-offset_bottom = 210.0
-text = "Sair"
+[node name="BtnContinuar" type="TextureButton" parent="PauseMenu/VBoxContainer" unique_id=2135523429]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_snp6e")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BtnSair" type="TextureButton" parent="PauseMenu/VBoxContainer" unique_id=1380152928]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_b8bbj")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_entered"]
+[connection signal="mouse_exited" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_exited"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/VBoxContainer/BtnSair" to="PauseMenu" method="_on_btn_sair_mouse_entered"]
+[connection signal="mouse_exited" from="PauseMenu/VBoxContainer/BtnSair" to="PauseMenu" method="_on_btn_sair_mouse_exited"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/BtnSair" to="PauseMenu" method="_on_btn_sair_pressed"]

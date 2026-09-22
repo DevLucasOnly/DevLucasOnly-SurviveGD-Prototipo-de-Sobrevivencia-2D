@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-# Ajuste os caminhos de acordo com a sua árvore de cena
 @onready var btn_continuar = $VBoxContainer/BtnContinuar
 @onready var btn_sair = $VBoxContainer/BtnSair
 
