@@ -13,7 +13,7 @@ config_version=5
 config/name="SurviveGD"
 run/main_scene="uid://c5eboavo5wepl"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://beq16e4271bhc"
 
 [autoload]
 
