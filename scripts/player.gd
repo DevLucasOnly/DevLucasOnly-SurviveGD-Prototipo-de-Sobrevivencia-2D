@@ -1,34 +1,59 @@
 extends CharacterBody2D
 
+enum Estado {IDLE, MOVE, DEAD}
+var estado_atual: Estado = Estado.IDLE
+
 @export var speed: float = 300.0
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
-	# Conecta o sinal do Autoload a uma função local para validação
+	# Conecta os sinais do Autoload às funções locais
 	GameManager.humanidade_alterada.connect(_on_humanidade_alterada)
+	GameManager.game_over.connect(_on_game_over)
 
 func _physics_process(_delta: float) -> void:
-	# Verifica o estado no script global
-	if GameManager.humanidade_atual > 0.0:
-		var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		velocity = input_direction * speed
-		
-		# Controle de Animação
-		if velocity != Vector2.ZERO:
-			anim.play("walk")
-			if velocity.x != 0:
-				sprite.flip_h = velocity.x < 0
-		else:
-			anim.play("idle")
-			pass
-	else:
-		# Bloqueia a movimentação e força animação base caso a energia zere
-		velocity = Vector2.ZERO
-		anim.play("idle")
-		
+
+	print("Estado atual: ", estado_atual)
+
+	match estado_atual:
+		Estado.IDLE:
+			_estado_idle()
+		Estado.MOVE:
+			_estado_move()
+		Estado.DEAD:
+			_estado_dead()
+	
 	move_and_slide()
 
+func _estado_idle() -> void:
+	velocity = Vector2.ZERO
+	anim.play("idle")
+	
+	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if input_direction != Vector2.ZERO:
+		estado_atual = Estado.MOVE
+
+func _estado_move() -> void:
+	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	velocity = input_direction * speed
+	
+	if velocity == Vector2.ZERO:
+		estado_atual = Estado.IDLE
+	else:
+		anim.play("walk")
+		if velocity.x != 0:
+			sprite.flip_h = velocity.x < 0
+
+func _estado_dead() -> void:
+	velocity = Vector2.ZERO
+	anim.play("idle")
+
 func _on_humanidade_alterada(valor: float) -> void:
-	print("Humanidade: ", valor)
+	# Mantido para debugar a humanidade, caso necessário
+	pass 
+
+func _on_game_over() -> void:
+	print("[DEBUG] Player recebeu game_over")
+	estado_atual = Estado.DEAD
