@@ -1,18 +1,24 @@
 [gd_scene format=3 uid="uid://bd4brpl4s26hh"]
 
 [ext_resource type="Script" uid="uid://mw2cyrq3rjtf" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="FontFile" uid="uid://dr13es5o7sqdy" path="res://assets/Fonte/SurviveGD_Pixel.ttf" id="2_oo0fn"]
 
 [node name="HUD" type="CanvasLayer" unique_id=913610252]
 process_mode = 3
 script = ExtResource("1_ahhtf")
 
 [node name="TempoLabel" type="Label" parent="." unique_id=1135590263]
-offset_left = 258.0
-offset_top = 2.0
-offset_right = 637.0
-offset_bottom = 25.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 18
 text = "00:00"
-horizontal_alignment = 2
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="BarraHumanidade" type="ProgressBar" parent="." unique_id=716565313]
 offset_left = 3.0
