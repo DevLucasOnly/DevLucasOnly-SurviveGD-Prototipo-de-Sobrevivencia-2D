@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://b37ssitr6spcg"]
+
+[ext_resource type="Script" uid="uid://diof08hdd4cx7" path="res://scripts/game_over.gd" id="1_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://2geksbptpi8d" path="res://assets/Menu/GameOver.png" id="1_wqhvx"]
+[ext_resource type="Texture2D" uid="uid://bqbs0qier1x20" path="res://assets/Menu/BotaoGameOver.png" id="2_tbwuq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_racf3"]
+atlas = ExtResource("2_tbwuq")
+region = Rect2(218.91437, 63.834263, 1732.9307, 268.23685)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m3ot"]
+atlas = ExtResource("2_tbwuq")
+region = Rect2(220.836, 397.0896, 1731.2759, 270.44806)
+
+[node name="GameOverMenu" type="CanvasLayer" unique_id=848830638]
+process_mode = 3
+script = ExtResource("1_tbwuq")
+
+[node name="PainelGameOver" type="TextureRect" parent="." unique_id=97385721]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wqhvx")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelGameOver" unique_id=994013023]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -189.5
+offset_top = -168.0
+offset_right = 189.5
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="BtnTenteNovamente" type="TextureButton" parent="PainelGameOver/VBoxContainer" unique_id=1337382034]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_racf3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BtnSair" type="TextureButton" parent="PainelGameOver/VBoxContainer" unique_id=2124471135]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_7m3ot")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="LabelScoreAtual" type="Label" parent="PainelGameOver/VBoxContainer" unique_id=1490613090]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="LabelHighScore" type="Label" parent="PainelGameOver/VBoxContainer" unique_id=1997038677]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_mouse_entered"]
+[connection signal="mouse_exited" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_mouse_exited"]
+[connection signal="pressed" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_pressed"]
+[connection signal="mouse_entered" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_mouse_entered"]
+[connection signal="mouse_exited" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_mouse_exited"]
+[connection signal="pressed" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_pressed"]
