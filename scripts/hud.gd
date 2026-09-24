@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var barra_humanidade: ProgressBar = $BarraHumanidade
 @onready var tempo_label: Label = $TempoLabel
-@onready var painel_game_over: ColorRect = $PainelGameOver
+@onready var painel_game_over: TextureRect = $PainelGameOver
 @onready var botao_restart: Button = $PainelGameOver/BotaoRestart
 
 func _ready() -> void:

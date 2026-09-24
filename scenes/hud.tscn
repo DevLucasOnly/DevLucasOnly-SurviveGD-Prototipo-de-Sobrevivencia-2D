@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bd4brpl4s26hh"]
 
 [ext_resource type="Script" uid="uid://mw2cyrq3rjtf" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://2geksbptpi8d" path="res://assets/Menu/GameOver.png" id="2_oo0fn"]
 
 [node name="HUD" type="CanvasLayer" unique_id=913610252]
 process_mode = 3
@@ -21,13 +22,14 @@ grow_horizontal = 0
 text = "00:00"
 horizontal_alignment = 2
 
-[node name="PainelGameOver" type="ColorRect" parent="." unique_id=2035267254]
+[node name="PainelGameOver" type="TextureRect" parent="." unique_id=1755333435]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.5882353)
+texture = ExtResource("2_oo0fn")
+expand_mode = 1
 
 [node name="BotaoRestart" type="Button" parent="PainelGameOver" unique_id=62327055]
 layout_mode = 1
