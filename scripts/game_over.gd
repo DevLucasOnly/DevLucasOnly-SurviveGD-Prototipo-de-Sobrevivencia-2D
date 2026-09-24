@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 @onready var painel: TextureRect = $PainelGameOver
-@onready var label_score: Label = $PainelGameOver/VBoxContainer/LabelScoreAtual
-@onready var label_high_score: Label = $PainelGameOver/VBoxContainer/LabelHighScore
+@onready var label_score: Label = $PainelGameOver/VBoxContainer/ContainerScores/LabelScoreAtual
+@onready var label_high_score: Label = $PainelGameOver/VBoxContainer/ContainerScores/LabelHighScore
 @onready var btn_restart: TextureButton = $PainelGameOver/VBoxContainer/BtnTenteNovamente
 @onready var btn_sair: TextureButton = $PainelGameOver/VBoxContainer/BtnSair
 
