@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ia02vg4l1mu" path="res://scenes/inimigo.tscn" id="6_qfnet"]
 [ext_resource type="Script" uid="uid://2y327late8of" path="res://scripts/pause_menu.gd" id="7_i7141"]
 [ext_resource type="Texture2D" uid="uid://bnv7fky8vgaxd" path="res://assets/Menu/BotaoPausa.png" id="9_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://b37ssitr6spcg" path="res://scenes/game_over.tscn" id="10_w7kh3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7kh3"]
 texture = ExtResource("3_4mrxx")
@@ -6862,6 +6863,8 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_b8bbj")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="GameOverMenu" parent="." unique_id=848830638 instance=ExtResource("10_w7kh3")]
 
 [connection signal="mouse_entered" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_entered"]
 [connection signal="mouse_exited" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_exited"]

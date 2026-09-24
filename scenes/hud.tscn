@@ -1,70 +1,22 @@
 [gd_scene format=3 uid="uid://bd4brpl4s26hh"]
 
 [ext_resource type="Script" uid="uid://mw2cyrq3rjtf" path="res://scripts/hud.gd" id="1_ahhtf"]
-[ext_resource type="Texture2D" uid="uid://2geksbptpi8d" path="res://assets/Menu/GameOver.png" id="2_oo0fn"]
-[ext_resource type="Texture2D" uid="uid://bqbs0qier1x20" path="res://assets/Menu/BotaoGameOver.png" id="3_5ysmq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b8bbj"]
-atlas = ExtResource("3_5ysmq")
-region = Rect2(218.91437, 63.834263, 1732.9307, 268.23685)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wlwps"]
-atlas = ExtResource("3_5ysmq")
-region = Rect2(220.836, 397.0896, 1731.2759, 270.44806)
 
 [node name="HUD" type="CanvasLayer" unique_id=913610252]
 process_mode = 3
 script = ExtResource("1_ahhtf")
 
 [node name="TempoLabel" type="Label" parent="." unique_id=1135590263]
-offset_left = 140.0
-offset_top = 300.0
-offset_right = 519.0
-offset_bottom = 323.0
-grow_horizontal = 0
+offset_left = 258.0
+offset_top = 2.0
+offset_right = 637.0
+offset_bottom = 25.0
 text = "00:00"
 horizontal_alignment = 2
 
 [node name="BarraHumanidade" type="ProgressBar" parent="." unique_id=716565313]
-offset_left = 140.0
-offset_top = 292.0
-offset_right = 519.0
-offset_bottom = 296.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 159.0
+offset_bottom = 22.0
 show_percentage = false
-
-[node name="PainelGameOver" type="TextureRect" parent="." unique_id=1755333435]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_oo0fn")
-expand_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PainelGameOver" unique_id=1540428161]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 224.0
-offset_right = 519.0
-offset_bottom = 295.0
-
-[node name="BtnTenteNovamente" type="TextureButton" parent="PainelGameOver/VBoxContainer" unique_id=1140477911]
-custom_minimum_size = Vector2(150, 30)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_b8bbj")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="BtnSair" type="TextureButton" parent="PainelGameOver/VBoxContainer" unique_id=1568501643]
-custom_minimum_size = Vector2(150, 30)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_wlwps")
-ignore_texture_size = true
-stretch_mode = 5
-
-[connection signal="mouse_entered" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_mouse_entered"]
-[connection signal="mouse_exited" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_mouse_exited"]
-[connection signal="pressed" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_pressed"]
-[connection signal="mouse_entered" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_mouse_entered"]
-[connection signal="mouse_exited" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_mouse_exited"]
-[connection signal="pressed" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_pressed"]
