@@ -20,9 +20,14 @@ text = "00:00"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="BarraHumanidade" type="ProgressBar" parent="." unique_id=716565313]
+[node name="BarraHumanidade" type="TextureProgressBar" parent="." unique_id=495060]
 offset_left = 3.0
 offset_top = 2.0
 offset_right = 159.0
 offset_bottom = 22.0
-show_percentage = false
+
+[node name="BarraVida" type="TextureProgressBar" parent="." unique_id=1251776760]
+offset_left = 207.0
+offset_top = 1.0
+offset_right = 472.0
+offset_bottom = 16.0
