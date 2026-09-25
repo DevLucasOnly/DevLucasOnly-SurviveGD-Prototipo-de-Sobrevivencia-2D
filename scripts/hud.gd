@@ -1,38 +1,31 @@
 extends CanvasLayer
 
-@onready var barra_humanidade: ProgressBar = $BarraHumanidade
+@onready var barra_humanidade: TextureProgressBar = $BarraHumanidade
+@onready var barra_vida: TextureProgressBar = $BarraVida
 @onready var tempo_label: Label = $TempoLabel
-@onready var painel_game_over: ColorRect = $PainelGameOver
-@onready var botao_restart: Button = $PainelGameOver/BotaoRestart
 
 func _ready() -> void:
-	# Oculta o painel de Game Over ao iniciar
-	painel_game_over.hide()
+	# Inicializa Humanidade
 	barra_humanidade.max_value = GameManager.humanidade_maxima
 	barra_humanidade.value = GameManager.humanidade_atual
+	GameManager.humanidade_alterada.connect(_atualizar_humanidade)
 	
-	GameManager.humanidade_alterada.connect(_atualizar_barra)
+	# Inicializa Vida
+	barra_vida.max_value = GameManager.vida_maxima
+	barra_vida.value = GameManager.vida_atual
+	GameManager.vida_alterada.connect(_atualizar_vida)
+	
+	# Inicializa Tempo
 	GameManager.tempo_atualizado.connect(_atualizar_tempo)
-	
-	# Conecta o sinal de derrota
-	GameManager.game_over.connect(_exibir_game_over)
-	
-	# Conecta o clique do botão via código
-	botao_restart.pressed.connect(_reiniciar_jogo)
 
-func _atualizar_barra(valor: float) -> void:
+func _atualizar_humanidade(valor: float) -> void:
 	barra_humanidade.value = valor
 
+# CORREÇÃO: O parâmetro 'valor' agora é int, correspondendo ao sinal do GameManager
+func _atualizar_vida(valor: int) -> void:
+	barra_vida.value = valor
+
 func _atualizar_tempo(tempo_segundos: int) -> void:
-	var minutos = tempo_segundos / 60
+	var minutos = int(tempo_segundos / 60.0) 
 	var segundos = tempo_segundos % 60
 	tempo_label.text = "%02d:%02d" % [minutos, segundos]
-
-func _exibir_game_over() -> void:
-	painel_game_over.show()
-	get_tree().paused = true # Pausa todos os nós do jogo
-
-func _reiniciar_jogo() -> void:
-	get_tree().paused = false # Remove a pausa
-	GameManager.resetar_estado() # Reseta os dados do Singleton
-	get_tree().reload_current_scene() # Recarrega o mapa
