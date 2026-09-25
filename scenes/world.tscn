@@ -6676,7 +6676,6 @@ position = Vector2(387, 76)
 position = Vector2(151, 76)
 
 [node name="HUD" parent="." unique_id=913610252 instance=ExtResource("4_k0juu")]
-visible = false
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1937644198]
 
@@ -6826,7 +6825,6 @@ position = Vector2(1464, 908)
 
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=736829790]
 process_mode = 3
-visible = false
 script = ExtResource("7_i7141")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=1537852559]
@@ -6867,7 +6865,6 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="GameOverMenu" parent="." unique_id=848830638 instance=ExtResource("10_w7kh3")]
-visible = false
 
 [connection signal="mouse_entered" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_entered"]
 [connection signal="mouse_exited" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_exited"]

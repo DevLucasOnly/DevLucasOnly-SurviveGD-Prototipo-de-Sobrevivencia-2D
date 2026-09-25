@@ -10,7 +10,7 @@ region = Rect2(205.0805, 563.0406, 1127.8274, 119.00458)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5onr"]
 atlas = ExtResource("3_5ysmq")
-region = Rect2(244.11162, 863.11633, 1049.5663, 67.91266)
+region = Rect2(257.34143, 871.90955, 1023.9083, 50.383057)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3hyu"]
 atlas = ExtResource("3_5ysmq")
@@ -18,7 +18,7 @@ region = Rect2(205.49655, 401.51324, 1127.0184, 118.50366)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhx03"]
 atlas = ExtResource("3_5ysmq")
-region = Rect2(244.44733, 736.33875, 1049.2808, 64.25781)
+region = Rect2(261.20587, 745.43414, 1017.50665, 48.36847)
 
 [node name="HUD" type="CanvasLayer" unique_id=913610252]
 process_mode = 3
@@ -38,21 +38,23 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="BarraHumanidade" type="TextureProgressBar" parent="." unique_id=495060]
-offset_left = -443.0
-offset_top = -49.0
-offset_right = 684.0
-offset_bottom = 70.0
+offset_left = -464.0
+offset_top = -47.0
+offset_right = 663.0
+offset_bottom = 72.0
 offset_transform_enabled = true
 offset_transform_scale = Vector2(0.15, 0.15)
 texture_under = SubResource("AtlasTexture_w7kh3")
 texture_progress = SubResource("AtlasTexture_q5onr")
+texture_progress_offset = Vector2(50, 30)
 
 [node name="BarraVida" type="TextureProgressBar" parent="." unique_id=1251776760]
-offset_left = -187.0
-offset_top = -48.0
-offset_right = 940.0
-offset_bottom = 70.0
+offset_left = -241.0
+offset_top = -46.0
+offset_right = 886.0
+offset_bottom = 72.0
 offset_transform_enabled = true
 offset_transform_scale = Vector2(0.15, 0.15)
 texture_under = SubResource("AtlasTexture_e3hyu")
 texture_progress = SubResource("AtlasTexture_jhx03")
+texture_progress_offset = Vector2(55, 34)
