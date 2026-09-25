@@ -2,6 +2,23 @@
 
 [ext_resource type="Script" uid="uid://mw2cyrq3rjtf" path="res://scripts/hud.gd" id="1_ahhtf"]
 [ext_resource type="FontFile" uid="uid://dr13es5o7sqdy" path="res://assets/Fonte/SurviveGD_Pixel.ttf" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://dmf1tgnqxaq2w" path="res://assets/Player/barra vida_humanidade.png" id="3_5ysmq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7kh3"]
+atlas = ExtResource("3_5ysmq")
+region = Rect2(205.0805, 563.0406, 1127.8274, 119.00458)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5onr"]
+atlas = ExtResource("3_5ysmq")
+region = Rect2(244.11162, 863.11633, 1049.5663, 67.91266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3hyu"]
+atlas = ExtResource("3_5ysmq")
+region = Rect2(205.49655, 401.51324, 1127.0184, 118.50366)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhx03"]
+atlas = ExtResource("3_5ysmq")
+region = Rect2(244.44733, 736.33875, 1049.2808, 64.25781)
 
 [node name="HUD" type="CanvasLayer" unique_id=913610252]
 process_mode = 3
@@ -21,13 +38,21 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="BarraHumanidade" type="TextureProgressBar" parent="." unique_id=495060]
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 159.0
-offset_bottom = 22.0
+offset_left = -443.0
+offset_top = -49.0
+offset_right = 684.0
+offset_bottom = 70.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.15, 0.15)
+texture_under = SubResource("AtlasTexture_w7kh3")
+texture_progress = SubResource("AtlasTexture_q5onr")
 
 [node name="BarraVida" type="TextureProgressBar" parent="." unique_id=1251776760]
-offset_left = 207.0
-offset_top = 1.0
-offset_right = 472.0
-offset_bottom = 16.0
+offset_left = -187.0
+offset_top = -48.0
+offset_right = 940.0
+offset_bottom = 70.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.15, 0.15)
+texture_under = SubResource("AtlasTexture_e3hyu")
+texture_progress = SubResource("AtlasTexture_jhx03")
