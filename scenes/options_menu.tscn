@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://46kq374b7g0n"]
 
+[ext_resource type="Texture2D" uid="uid://d1qlsa2sylf0v" path="res://assets/Menu/background menu_opcoes.png" id="1_liyum"]
+[ext_resource type="FontFile" uid="uid://dr13es5o7sqdy" path="res://assets/Fonte/SurviveGD_Pixel.ttf" id="2_ijpji"]
+
 [node name="OptionsMenu" type="Control" unique_id=984315477]
 layout_mode = 3
 anchors_preset = 0
@@ -9,21 +12,50 @@ offset_bottom = 40.0
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2145751729]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 16.007
-anchor_bottom = 9.016001
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 6.7199707
-offset_bottom = -1.6400146
+anchor_right = 16.107
+anchor_bottom = 9.052
+offset_right = 72.71997
+offset_bottom = 40.919983
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_liyum")
 expand_mode = 1
 stretch_mode = 4
+metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1678603957]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=1678603957]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 202.0
+offset_top = 95.0
+offset_right = 514.0
+offset_bottom = 304.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1216203163]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer" unique_id=1216203163]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=751530554]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Volume Master"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=710312146]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=2026150267]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Volume Música"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=580352516]
+layout_mode = 2
+
+[node name="FullscreenBtn" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=936386035]
+layout_mode = 2
+
+[node name="DificuldadeBtn" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=342421090]
+layout_mode = 2
+
+[node name="VoltarBtn" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1731951939]
 layout_mode = 2
