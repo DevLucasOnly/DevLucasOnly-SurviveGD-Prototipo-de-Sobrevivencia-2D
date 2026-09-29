@@ -122,3 +122,5 @@ libraries/ = SubResource("AnimationLibrary_rmr57")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=66543122]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_snp6e")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
