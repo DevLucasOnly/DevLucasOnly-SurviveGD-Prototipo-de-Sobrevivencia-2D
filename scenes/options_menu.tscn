@@ -67,6 +67,8 @@ value = 1.0
 [node name="FullscreenBtn" type="CheckButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=2040666167]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_ijpji")
 
 [node name="DificuldadeBtn" type="OptionButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=660730197]
@@ -80,3 +82,7 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_lfjc7")
 ignore_texture_size = true
 stretch_mode = 5
+
+[connection signal="toggled" from="TextureRect/MarginContainer/VBoxContainer/FullscreenBtn" to="." method="_on_fullscreen_btn_toggled"]
+[connection signal="item_selected" from="TextureRect/MarginContainer/VBoxContainer/DificuldadeBtn" to="." method="_on_dificuldade_btn_item_selected"]
+[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/VoltarBtn" to="." method="_on_voltar_btn_pressed"]
