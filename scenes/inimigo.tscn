@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://wppj87tyfxpc" path="res://audio/Insectoide_Passos_Loop.wav" id="3_21tsg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snp6e"]
-radius = 7.0
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_4er16"]
 length = 0.001
