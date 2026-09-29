@@ -9,7 +9,7 @@ func _on_btn_jogar_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/world.tscn")
 
 func _on_btn_opcoes_pressed() -> void:
-	print("[DEBUG] Abrir ecrã de opções")
+	get_tree().change_scene_to_file("res://scenes/options_menu.tscn")
 
 func _on_btn_sair_pressed() -> void:
 	get_tree().quit()
