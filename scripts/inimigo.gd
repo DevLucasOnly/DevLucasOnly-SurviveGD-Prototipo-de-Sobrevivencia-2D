@@ -67,5 +67,5 @@ func morrer() -> void:
 	queue_free()
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("jogador"):
 		GameManager.aplicar_dano_jogador(1)
