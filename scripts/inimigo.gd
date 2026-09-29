@@ -65,3 +65,7 @@ func piscar_dano() -> void:
 
 func morrer() -> void:
 	queue_free()
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		GameManager.aplicar_dano_jogador(1)
