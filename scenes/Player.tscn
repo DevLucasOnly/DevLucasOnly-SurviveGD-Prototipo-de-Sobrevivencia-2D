@@ -136,6 +136,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=1449373304 groups=["jogador"]]
+motion_mode = 1
 script = ExtResource("1_i0ldb")
 speed = 80.0
 projetil_cena = ExtResource("2_3li8b")
