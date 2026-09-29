@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bxh8k2kcdxc2k" path="res://assets/Player/insectoides.png" id="2_21tsg"]
 [ext_resource type="AudioStream" uid="uid://wppj87tyfxpc" path="res://audio/Insectoide_Passos_Loop.wav" id="3_21tsg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_snp6e"]
-radius = 5.0
-
 [sub_resource type="Animation" id="Animation_4er16"]
 length = 0.001
 tracks/0/type = "value"
@@ -95,6 +92,9 @@ _data = {
 &"up": SubResource("Animation_4v6kx")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_snp6e"]
+radius = 5.0
+
 [node name="Inimigo" type="CharacterBody2D" unique_id=1514004947]
 motion_mode = 1
 script = ExtResource("1_61lki")
@@ -110,13 +110,15 @@ frame = 8
 region_enabled = true
 region_rect = Rect2(0, 329.05518, 1254, 312.83997)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66543122]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_snp6e")
-
 [node name="SFXPlayer" type="AudioStreamPlayer2D" parent="." unique_id=78537594]
 stream = ExtResource("3_21tsg")
 max_distance = 400.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2075031018]
 libraries/ = SubResource("AnimationLibrary_rmr57")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1996568289]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=66543122]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_snp6e")
