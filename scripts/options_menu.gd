@@ -1,9 +1,9 @@
 extends Control
 
-@onready var master_slider: HSlider = $MarginContainer/VBoxContainer/MasterSlider
-@onready var bgm_slider: HSlider = $MarginContainer/VBoxContainer/BGMSlider
-@onready var fullscreen_btn: CheckButton = $MarginContainer/VBoxContainer/FullscreenBtn
-@onready var dificuldade_btn: OptionButton = $MarginContainer/VBoxContainer/DificuldadeBtn
+@onready var master_slider: HSlider = $TextureRect/MarginContainer/VBoxContainer/MasterSlider
+@onready var bgm_slider: HSlider = $TextureRect/MarginContainer/VBoxContainer/BGMSlider
+@onready var fullscreen_btn: CheckButton = $TextureRect/MarginContainer/VBoxContainer/FullscreenBtn
+@onready var dificuldade_btn: OptionButton = $TextureRect/MarginContainer/VBoxContainer/DificuldadeBtn
 
 var master_bus_index: int
 var bgm_bus_index: int
@@ -43,3 +43,6 @@ func _on_dificuldade_btn_item_selected(index: int) -> void:
 	dificuldade_atual = index
 	# Futuramente, isto será gravado no ficheiro e lido pelo GameManager
 	print("Dificuldade selecionada: ", index)
+
+func _on_voltar_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn") 
