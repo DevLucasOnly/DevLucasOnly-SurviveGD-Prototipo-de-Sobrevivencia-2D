@@ -29,6 +29,7 @@ func _on_bgm_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(bgm_bus_index, linear_to_db(value))
 
 func _on_fullscreen_btn_toggled(toggled_on: bool) -> void:
+	print("[DEBUG] Sinal recebido. Modo Tela Cheia: ", toggled_on)
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
@@ -61,9 +62,9 @@ func carregar_opcoes() -> void:
 	var modo_fullscreen = config.get_value("Video", "fullscreen", false)
 	fullscreen_btn.button_pressed = modo_fullscreen
 	if modo_fullscreen:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		get_window().mode = Window.MODE_FULLSCREEN
 	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		get_window().mode = Window.MODE_WINDOWED
 		
 	var diff = config.get_value("Jogo", "dificuldade", 1)
 	dificuldade_btn.selected = diff
