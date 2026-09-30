@@ -4,8 +4,12 @@ extends Control
 @onready var btn_opcoes = $BotoesContainer/BtnOpcoes
 @onready var btn_sair = $BotoesContainer/BtnSair
 
+func _ready() -> void:
+	GameManager.tocar_musica()
+
 func _on_btn_jogar_pressed() -> void:
 	GameManager.resetar_estado()
+	GameManager.parar_musica()
 	get_tree().change_scene_to_file("res://scenes/world.tscn")
 
 func _on_btn_opcoes_pressed() -> void:
