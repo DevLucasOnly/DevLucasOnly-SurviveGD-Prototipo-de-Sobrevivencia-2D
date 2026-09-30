@@ -7,14 +7,18 @@ var direction: Vector2 = Vector2.ZERO
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
+# --- NOVO: Deteta dano através da Hitbox (Area2D) ---
+func _on_area_entered(area: Area2D) -> void:
+	var entidade = area.get_parent() # Acede ao nó raiz (CharacterBody2D) que contém o script
+	
+	if entidade and entidade.name != "Player" and entidade.has_method("receber_dano"):
+		entidade.receber_dano(damage)
+		queue_free()
+
+# --- ATUALIZADO: Serve apenas para destruir o tiro no cenário físico ---
 func _on_body_entered(body: Node2D) -> void:
-	# Ignora o próprio jogador; requer que o inimigo tenha o método 'receber_dano'
-	if body.name != "Player" and body.has_method("receber_dano"):
-		body.receber_dano(damage)
-		queue_free()
-	# Destrói a bala se bater em paredes (StaticBody2D ou TileMapLayer)
-	elif not body.name == "Player":
-		queue_free()
+	if body.name != "Player":
+		queue_free() 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
