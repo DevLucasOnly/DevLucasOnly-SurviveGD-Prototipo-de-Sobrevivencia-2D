@@ -70,6 +70,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_ijpji")
+text = "TELA CHEIA"
 
 [node name="DificuldadeBtn" type="OptionButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=660730197]
 custom_minimum_size = Vector2(150, 30)
