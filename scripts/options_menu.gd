@@ -9,7 +9,7 @@ const ARQUIVO_CONFIG = "user://settings.cfg"
 var config = ConfigFile.new()
 var master_bus_index: int
 var bgm_bus_index: int
-var dificuldade_atual: int = 1 # 0 = Fácil, 1 = Normal, 2 = Difícil
+var dificuldade_atual: int = 1 
 
 func _ready() -> void:
 	master_bus_index = AudioServer.get_bus_index("Master")
@@ -20,49 +20,41 @@ func _ready() -> void:
 	dificuldade_btn.add_item("Normal", 1)
 	dificuldade_btn.add_item("Difícil", 2)
 	
-	# Chama a função que carrega e aplica os dados guardados
 	carregar_opcoes()
 
-# --- SINAIS DE ÁUDIO ---
 func _on_master_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(master_bus_index, linear_to_db(value))
 
 func _on_bgm_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(bgm_bus_index, linear_to_db(value))
 
-# --- SINAL DO ECRÃ INTEIRO ---
 func _on_fullscreen_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
-# --- SINAL DA DIFICULDADE ---
 func _on_dificuldade_btn_item_selected(index: int) -> void:
 	dificuldade_atual = index
-	# Futuramente, isto será gravado no ficheiro e lido pelo GameManager
 	print("Dificuldade selecionada: ", index)
 
 func _on_voltar_btn_pressed() -> void:
-	guardar_opcoes() # Grava no disco antes de fechar
+	guardar_opcoes() 
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn") 
 
 func guardar_opcoes() -> void:
-	# Guarda os valores atuais da UI no objeto config
 	config.set_value("Audio", "master", master_slider.value)
 	config.set_value("Audio", "bgm", bgm_slider.value)
 	config.set_value("Video", "fullscreen", fullscreen_btn.button_pressed)
 	config.set_value("Jogo", "dificuldade", dificuldade_btn.selected)
 	
-	# Escreve no disco
 	config.save(ARQUIVO_CONFIG)
 
 func carregar_opcoes() -> void:
 	var erro = config.load(ARQUIVO_CONFIG)
 	if erro != OK:
-		return # Ficheiro não existe (primeira vez a abrir o jogo), mantém os padrões da UI
+		return 
 	
-	# Lê os valores do ficheiro e atualiza a UI (usa valores padrão se a chave não existir)
 	master_slider.value = config.get_value("Audio", "master", 0.8)
 	bgm_slider.value = config.get_value("Audio", "bgm", 0.8)
 	
