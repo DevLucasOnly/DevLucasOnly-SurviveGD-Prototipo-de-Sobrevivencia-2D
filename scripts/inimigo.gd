@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var anim: AnimationPlayer = $AnimationPlayer # Nova referência
 
-@export var velocidade_base: float = 120.0
+@export var velocidade_base: float = 70.0
 @export var vida_maxima: int = 3
 
 var alvo: Node2D
@@ -16,8 +16,12 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if alvo and GameManager.humanidade_atual > 0.0:
-		# Lógica de escalonamento: Aumenta a velocidade progressivamente
-		var escalonamento_temporal = 1.0 + (GameManager.tempo_sobrevivencia * 0.005) # +0.5% por segundo
+		# Reduz a taxa de crescimento para 0.0015 (0.15% por segundo)
+		var escalonamento_temporal = 1.0 + (GameManager.tempo_sobrevivencia * 0.0015) 
+		
+		# Define um teto máximo rígido (ex: a velocidade nunca será maior que 2x a base)
+		escalonamento_temporal = min(escalonamento_temporal, 2.0)
+		
 		var velocidade_atual = velocidade_base * escalonamento_temporal * GameManager.multiplicador_dificuldade
 		
 		var direcao = global_position.direction_to(alvo.global_position)
