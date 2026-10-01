@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dxouhy3fgo6if"]
+
+[node name="SpawnerInimigos" type="Node2D" unique_id=781631048]
+
+[node name="TimerSpawn" type="Timer" parent="." unique_id=705363153]
+autostart = true
+
+[node name="PontosSpawn" type="Node2D" parent="." unique_id=501853172]
+
+[node name="Marker2D" type="Marker2D" parent="PontosSpawn" unique_id=1992062161]
+position = Vector2(-189, -316)
+
+[node name="Marker2D2" type="Marker2D" parent="PontosSpawn" unique_id=1036523664]
+position = Vector2(188, 675)
+
+[node name="Marker2D3" type="Marker2D" parent="PontosSpawn" unique_id=2065705638]
+position = Vector2(393, -379)
+
+[node name="Marker2D4" type="Marker2D" parent="PontosSpawn" unique_id=852294030]
+position = Vector2(952, -324)
+
+[node name="Marker2D5" type="Marker2D" parent="PontosSpawn" unique_id=2072017042]
+position = Vector2(-656, -288)
+
+[node name="Marker2D6" type="Marker2D" parent="PontosSpawn" unique_id=426111812]
+position = Vector2(629, 686)
+
+[node name="Marker2D7" type="Marker2D" parent="PontosSpawn" unique_id=1329566847]
+position = Vector2(1247, 360)
+
+[node name="Marker2D8" type="Marker2D" parent="PontosSpawn" unique_id=921497421]
+position = Vector2(1013, 615)
+
+[node name="Marker2D9" type="Marker2D" parent="PontosSpawn" unique_id=2057437132]
+position = Vector2(1361, -36)
+
+[node name="Marker2D10" type="Marker2D" parent="PontosSpawn" unique_id=221580249]
+position = Vector2(1295, -436)
+
+[node name="Marker2D11" type="Marker2D" parent="PontosSpawn" unique_id=1454592193]
+position = Vector2(1105, -731)
+
+[node name="Marker2D12" type="Marker2D" parent="PontosSpawn" unique_id=1355198656]
+position = Vector2(482, -761)
+
+[node name="Marker2D13" type="Marker2D" parent="PontosSpawn" unique_id=1629578324]
+position = Vector2(-64, -751)
+
+[node name="Marker2D14" type="Marker2D" parent="PontosSpawn" unique_id=2086826710]
+position = Vector2(-600, -724)
+
+[node name="Marker2D15" type="Marker2D" parent="PontosSpawn" unique_id=1566827032]
+position = Vector2(-638, 120)
+
+[node name="Marker2D16" type="Marker2D" parent="PontosSpawn" unique_id=1703379369]
+position = Vector2(-514, 443)
+
+[node name="Marker2D17" type="Marker2D" parent="PontosSpawn" unique_id=744498716]
+position = Vector2(-315, 598)
