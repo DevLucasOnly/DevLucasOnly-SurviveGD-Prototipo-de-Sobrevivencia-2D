@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ia02vg4l1mu" path="res://scenes/inimigo.tscn" id="6_qfnet"]
 [ext_resource type="Script" uid="uid://2y327late8of" path="res://scripts/pause_menu.gd" id="7_i7141"]
 [ext_resource type="Texture2D" uid="uid://bnv7fky8vgaxd" path="res://assets/Menu/BotaoPausa.png" id="9_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://dxouhy3fgo6if" path="res://scenes/spawner_inimigos.tscn" id="10_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://b37ssitr6spcg" path="res://scenes/game_over.tscn" id="10_w7kh3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7kh3"]
@@ -6814,15 +6815,6 @@ position = Vector2(-349, 501)
 [node name="SpawnTimer" type="Timer" parent="." unique_id=971247218]
 autostart = true
 
-[node name="Inimigo" parent="." unique_id=1514004947 instance=ExtResource("6_qfnet")]
-position = Vector2(163, -123)
-
-[node name="Inimigo2" parent="." unique_id=1130071603 instance=ExtResource("6_qfnet")]
-position = Vector2(-462, 581)
-
-[node name="Inimigo3" parent="." unique_id=1852223130 instance=ExtResource("6_qfnet")]
-position = Vector2(1464, 908)
-
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=736829790]
 process_mode = 3
 script = ExtResource("7_i7141")
@@ -6865,6 +6857,9 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="GameOverMenu" parent="." unique_id=848830638 instance=ExtResource("10_w7kh3")]
+
+[node name="SpawnerInimigos" parent="." unique_id=781631048 instance=ExtResource("10_e3hyu")]
+inimigo_cena = ExtResource("6_qfnet")
 
 [connection signal="mouse_entered" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_entered"]
 [connection signal="mouse_exited" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_exited"]

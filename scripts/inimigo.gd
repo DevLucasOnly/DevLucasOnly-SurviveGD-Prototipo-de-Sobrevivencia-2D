@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var anim: AnimationPlayer = $AnimationPlayer # Nova referência
 
-@export var velocidade: float = 120.0
+@export var velocidade_base: float = 120.0
 @export var vida_maxima: int = 3
 
 var alvo: Node2D
@@ -16,17 +16,19 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if alvo and GameManager.humanidade_atual > 0.0:
+		# Lógica de escalonamento: Aumenta a velocidade progressivamente
+		var escalonamento_temporal = 1.0 + (GameManager.tempo_sobrevivencia * 0.005) # +0.5% por segundo
+		var velocidade_atual = velocidade_base * escalonamento_temporal * GameManager.multiplicador_dificuldade
+		
 		var direcao = global_position.direction_to(alvo.global_position)
-		velocity = direcao * velocidade
+		velocity = direcao * velocidade_atual
 		move_and_slide()
 		
-		# Gatilho: Toca o som de movimento enquanto possui velocidade
 		if velocity != Vector2.ZERO:
 			acionar_som_sfx()
-			atualizar_direcao_visual() # Atualiza o sprite baseado na perseguição
+			atualizar_direcao_visual()
 	else:
 		velocity = Vector2.ZERO
-		# Para o som imediatamente se o inimigo parar de se mover
 		sfx_player.stop()
 
 func atualizar_direcao_visual() -> void:

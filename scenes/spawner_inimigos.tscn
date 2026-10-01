@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dxouhy3fgo6if"]
 
+[ext_resource type="Script" uid="uid://cjunhy22cfl4x" path="res://scripts/spawner_inimigos.gd" id="1_f7vux"]
+
 [node name="SpawnerInimigos" type="Node2D" unique_id=781631048]
+script = ExtResource("1_f7vux")
 
 [node name="TimerSpawn" type="Timer" parent="." unique_id=705363153]
 autostart = true

@@ -12,6 +12,7 @@ var humanidade_maxima: float = 100.0
 var humanidade_atual: float = 100.0
 var tempo_sobrevivencia: float = 0.0
 var taxa_decaimento: float = 5.0 
+var multiplicador_dificuldade: float = 1.0
 
 var vida_maxima: int = 3
 var vida_atual: int = 3
@@ -113,7 +114,13 @@ func _carregar_configuracoes_globais() -> void:
 		var modo_fullscreen = config.get_value("Video", "fullscreen", false)
 		if modo_fullscreen:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-			
+		
+		var diff = config.get_value("Jogo", "dificuldade", 1)
+		match diff:
+			0: multiplicador_dificuldade = 0.8
+			1: multiplicador_dificuldade = 1.0
+			2: multiplicador_dificuldade = 1.5
+
 func parar_musica() -> void:
 	if bgm_player and bgm_player.playing:
 		bgm_player.stop()
