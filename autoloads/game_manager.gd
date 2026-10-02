@@ -1,48 +1,55 @@
 extends Node
 
 signal humanidade_alterada(novo_valor: float)
-signal vida_alterada(novo_valor: int) # Novo sinal para a UI dos corações
+signal vida_alterada(novo_valor: int) 
 signal tempo_atualizado(novo_tempo: int)
 signal game_over
+
+const SAVE_PATH: String = "user://highscore.save"
+const ARQUIVO_CONFIG: String = "user://settings.cfg"
 
 var humanidade_maxima: float = 100.0
 var humanidade_atual: float = 100.0
 var tempo_sobrevivencia: float = 0.0
-var taxa_decaimento: float = 5.0 # Perda por segundo
+var taxa_decaimento: float = 5.0 
 
-# Variáveis de Vida
 var vida_maxima: int = 3
 var vida_atual: int = 3
 
 var high_score: int = 0
-const SAVE_PATH: String = "user://highscore.save"
+var jogo_ativo: bool = true 
 
-var jogo_ativo: bool = true # Controla se o jogo está a correr
+var bgm_player: AudioStreamPlayer
 
 func _ready() -> void:
 	humanidade_atual = humanidade_maxima
 	vida_atual = vida_maxima
 	carregar_high_score()
+	
+	# Instancia e configura a música de fundo dinamicamente
+	bgm_player = AudioStreamPlayer.new()
+	add_child(bgm_player)
+	bgm_player.bus = "BGM"
+	bgm_player.stream = preload("res://audio/Ultimo_Sinal_SurviveGD.ogg") # ATENÇÃO: Atualize este caminho
+	bgm_player.play()
+	
+	_carregar_configuracoes_globais()
 
 func _process(delta: float) -> void:
 	if not jogo_ativo:
 		return
 
 	if humanidade_atual > 0.0:
-		# Lógica de decaimento contínuo
 		humanidade_atual -= taxa_decaimento * delta
 		humanidade_alterada.emit(humanidade_atual)
 		
-		# Incremento do score de tempo
 		tempo_sobrevivencia += delta
 		tempo_atualizado.emit(int(tempo_sobrevivencia))
 		
-		# Verifica se a humanidade zerou
 		if humanidade_atual <= 0.0:
 			humanidade_atual = 0.0
 			encerrar_jogo()
 
-# Nova função para deduzir vida independentemente da humanidade
 func aplicar_dano_jogador(quantidade: int) -> void:
 	if not jogo_ativo:
 		return
@@ -54,7 +61,6 @@ func aplicar_dano_jogador(quantidade: int) -> void:
 		vida_atual = 0
 		encerrar_jogo()
 
-# Centraliza a lógica de Game Over para ser acionada por vida ou humanidade
 func encerrar_jogo() -> void:
 	jogo_ativo = false
 	set_process(false)
@@ -93,3 +99,25 @@ func carregar_high_score() -> void:
 			high_score = file.get_32()
 			file.close()
 			print("[DEBUG] High Score carregado: ", high_score)
+
+func _carregar_configuracoes_globais() -> void:
+	var config = ConfigFile.new()
+	if config.load(ARQUIVO_CONFIG) == OK:
+		# Aplica os volumes guardados
+		var master_bus = AudioServer.get_bus_index("Master")
+		var bgm_bus = AudioServer.get_bus_index("BGM")
+		AudioServer.set_bus_volume_db(master_bus, linear_to_db(config.get_value("Audio", "master", 0.8)))
+		AudioServer.set_bus_volume_db(bgm_bus, linear_to_db(config.get_value("Audio", "bgm", 0.8)))
+		
+		# Aplica as configurações de ecrã inteiro
+		var modo_fullscreen = config.get_value("Video", "fullscreen", false)
+		if modo_fullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			
+func parar_musica() -> void:
+	if bgm_player and bgm_player.playing:
+		bgm_player.stop()
+
+func tocar_musica() -> void:
+	if bgm_player and not bgm_player.playing:
+		bgm_player.play()

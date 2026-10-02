@@ -5,11 +5,12 @@ extends CanvasLayer
 @onready var label_high_score: Label = $PainelGameOver/VBoxContainer/ContainerScores/LabelHighScore
 @onready var btn_restart: TextureButton = $PainelGameOver/VBoxContainer/BtnTenteNovamente
 @onready var btn_sair: TextureButton = $PainelGameOver/VBoxContainer/BtnSair
+@onready var game_over_audio: AudioStreamPlayer = $GameOverAudio
 
 func _ready() -> void:
 	painel.hide()
 	GameManager.game_over.connect(_acionar_game_over)
-	
+
 	# Ligações de clique
 	btn_restart.pressed.connect(_reiniciar)
 	btn_sair.pressed.connect(_ir_para_menu)
@@ -22,6 +23,7 @@ func _ready() -> void:
 
 func _acionar_game_over() -> void:
 	painel.show()
+	game_over_audio.play()
 	label_score.text = "SCORE ATUAL: " + str(int(GameManager.tempo_sobrevivencia))
 	label_high_score.text = "HIGH SCORE: " + str(GameManager.high_score)
 	get_tree().paused = true
