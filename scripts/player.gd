@@ -2,21 +2,22 @@ extends CharacterBody2D
 
 enum Estado {IDLE, MOVE, DEAD}
 var estado_atual: Estado = Estado.IDLE
-var direcao_atual: String = "down" # Registra a última direção ("down", "up", "side")
+var direcao_atual: String = "down" 
+var invulneravel: bool = false
 
 @export var speed: float = 300.0
-@export var projetil_cena: PackedScene # Nova variável para a cena do projétil
+@export var projetil_cena: PackedScene 
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
-@onready var muzzle: Marker2D = $Muzzle # Novo nó para o ponto de origem do disparo
+@onready var muzzle: Marker2D = $Muzzle 
+@onready var timer_invulnerabilidade: Timer = $TimerInvulnerabilidade
 
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
 
 func _ready() -> void:
-	# Conecta os sinais do Autoload às funções locais
 	GameManager.humanidade_alterada.connect(_on_humanidade_alterada)
 	GameManager.game_over.connect(_on_game_over)
 
@@ -25,7 +26,6 @@ func _input(event: InputEvent) -> void:
 		atirar()
 
 func _process(delta: float) -> void:
-	# Controle do decaimento do Camera Shake
 	if shake_intensity > 0:
 		shake_intensity = lerpf(shake_intensity, 0.0, SHAKE_DECAY * delta)
 		camera.offset = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * shake_intensity
@@ -58,19 +58,18 @@ func _estado_move() -> void:
 	if velocity == Vector2.ZERO:
 		estado_atual = Estado.IDLE
 	else:
-		# Define a animação com base no eixo dominante
 		if abs(velocity.x) > abs(velocity.y):
 			direcao_atual = "side"
 			anim.play("walk_side")
-			sprite.flip_h = velocity.x < 0 # Espelha se estiver indo para a esquerda
+			sprite.flip_h = velocity.x < 0 
 		elif velocity.y > 0:
 			direcao_atual = "down"
 			anim.play("walk_down")
-			sprite.flip_h = false # Garante que a frente/costas não fiquem espelhadas
+			sprite.flip_h = false 
 		else:
 			direcao_atual = "up"
 			anim.play("walk_up")
-			sprite.flip_h = false # Garante que a frente/costas não fiquem espelhadas
+			sprite.flip_h = false 
 
 func _estado_dead() -> void:
 	velocity = Vector2.ZERO
@@ -82,23 +81,17 @@ func atirar() -> void:
 		return
 		
 	var tiro = projetil_cena.instantiate()
-	# Adiciona o tiro à cena principal, não como filho do player
 	get_tree().current_scene.add_child(tiro) 
 	
 	tiro.global_position = muzzle.global_position
 	
-	# Calcula a direção vetorial do jogador até o rato
 	var direcao_mouse = (get_global_mouse_position() - global_position).normalized()
 	tiro.direction = direcao_mouse
-	
-	# Roda o sprite da bala para alinhar com a trajetória
 	tiro.rotation = direcao_mouse.angle()
 
 func acionar_feedback_dano() -> void:
-	# Aplica Camera Shake
 	shake_intensity = 15.0
 	
-	# Aplica Freeze Frame
 	Engine.time_scale = 0.0
 	await get_tree().create_timer(0.05, true, false, true).timeout
 	Engine.time_scale = 1.0
@@ -110,9 +103,23 @@ func _on_game_over() -> void:
 	estado_atual = Estado.DEAD
 
 func receber_dano(quantidade: int) -> void:
-	if estado_atual == Estado.DEAD:
+	if estado_atual == Estado.DEAD or invulneravel:
 		return
 
-	# Delega a dedução de vida e checagem de morte para o GameManager
+	invulneravel = true
+	timer_invulnerabilidade.start()
+
 	GameManager.aplicar_dano_jogador(quantidade)
 	acionar_feedback_dano()
+	_acionar_efeito_invulnerabilidade()
+
+func _acionar_efeito_invulnerabilidade() -> void:
+	var tween = create_tween().set_loops()
+	tween.tween_property(sprite, "modulate:a", 0.3, 0.1)
+	tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
+	
+	await timer_invulnerabilidade.timeout
+	
+	tween.kill()
+	sprite.modulate.a = 1.0
+	invulneravel = false

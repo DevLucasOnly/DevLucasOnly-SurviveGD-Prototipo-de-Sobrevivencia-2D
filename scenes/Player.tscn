@@ -165,3 +165,6 @@ position_smoothing_speed = 10.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=518234097]
 position = Vector2(-3, 0)
+
+[node name="TimerInvulnerabilidade" type="Timer" parent="." unique_id=1866591714]
+one_shot = true
