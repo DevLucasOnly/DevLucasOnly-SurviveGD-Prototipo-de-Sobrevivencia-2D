@@ -1,5 +1,7 @@
 # SurviveGD
 
+**[🎮 JOGAR ONLINE NO NAVEGADOR](https://devlucasonly.github.io/DevLucasOnly-SurviveGD-Prototipo-de-Sobrevivencia-2D/)**
+
 Protótipo de jogo de sobrevivência 2D top-down desenvolvido no Godot 4. O projeto implementa mecânicas de combate com projéteis, inteligência artificial de perseguição e gestão centralizada de múltiplos recursos vitais. Estrutura arquitetural baseada em máquina de estados e Autoloads, com controle de versão via Git.
 
 ## 🛠️ Tecnologias
@@ -10,9 +12,7 @@ Protótipo de jogo de sobrevivência 2D top-down desenvolvido no Godot 4. O proj
 * **Controle e Animação:** Movimentação bidimensional em 4 direções com máquina de estados (Idle, Move, Dead) e atualização direcional de sprites.
 
 * **Sistema Duplo de Recursos (GameManager):**
-
    * Humanidade: Decaimento temporal contínuo. Restaurada via coleta de itens (Antídotos). Zera resulta em Game Over.
-
    * Vida Física: Sistema de acertos (HP). Reduzida ao sofrer dano. Zera resulta em Game Over.
 
 * **Combate:** Sistema de disparo de projéteis instanciados com trajetória calculada pelo vetor direcional do cursor do mouse.
@@ -26,6 +26,11 @@ Protótipo de jogo de sobrevivência 2D top-down desenvolvido no Godot 4. O proj
 * **Persistência de Dados:** Sistema de High Score baseado em tempo de sobrevivência, salvo e carregado localmente no disco.
 
 ## 🚀 Como Executar
+
+### Jogar no Navegador (Recomendado)
+Acesse o link do GitHub Pages no topo deste documento para jogar a versão mais recente em HTML5/WebAssembly diretamente no navegador, sem necessidade de download.
+
+### Executar Localmente (Código Fonte)
 1. Clone este repositório:
    `git clone https://github.com/DevLucasOnly/DevLucasOnly-SurviveGD-Prototipo-de-Sobrevivencia-2D.git`
 2. Abra o Godot Engine (versão 4.x).
@@ -35,10 +40,12 @@ Protótipo de jogo de sobrevivência 2D top-down desenvolvido no Godot 4. O proj
 ## 📂 Estrutura do Repositório
 *   `/.godot/` - Ignorado via `.gitignore`.
 *   `/assets/` - Texturas e formas geométricas básicas.
+*   `/audio/` - Ficheiros de áudio para o jogo.
+*   `/autoloads/` - Ficheiros GDScript globais.
+*   `/docs/` - Ficheiros de build da exportação Web (HTML5) para o GitHub Pages.
 *   `/proposta/` - Documentação acadêmica (Proposta `.docx`, GDD e diagramas de modelagem de cenas/classes).
 *   `/scenes/` - Cenas do jogo (World, Player, Enemy, HUD).
 *   `/scripts/` - Arquivos GDScript isolados por nó funcional.
-*   `/autoloads/` - Arquivos GDScript globais.
-*   `/audio/` - Arquivos de audio para o game.
-  ## 🔄 Status do Projeto
-Em desenvolvimento. Transição concluída de gráficos provisórios (formas geométricas) para pixel art definitiva e implementação base de combate finalizada. Foco atual no mapeamento de colisões de cenário e balanceamento dos vetores de dano.
+
+## 🔄 Status do Projeto
+Em desenvolvimento. Transição concluída de gráficos provisórios (formas geométricas) para pixel art definitiva, implementação base de combate finalizada e exportação web configurada. Foco atual no mapeamento de colisões de cenário e construção do cenário de mapa.
