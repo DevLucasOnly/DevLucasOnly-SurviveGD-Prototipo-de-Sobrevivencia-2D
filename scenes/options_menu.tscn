@@ -19,23 +19,23 @@ script = ExtResource("1_lfjc7")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2145751729]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 16.107
-anchor_bottom = 9.052
-offset_right = 72.71997
-offset_bottom = 40.919983
+anchor_left = -0.025
+anchor_top = -0.95
+anchor_right = 19.125
+anchor_bottom = 11.175
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_liyum")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=1678603957]
 layout_mode = 0
-offset_left = 202.0
-offset_top = 101.0
-offset_right = 514.0
-offset_bottom = 299.0
+offset_left = 218.0
+offset_top = 132.0
+offset_right = 548.0
+offset_bottom = 348.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer" unique_id=1216203163]
 layout_mode = 2
