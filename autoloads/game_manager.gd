@@ -11,7 +11,14 @@ const ARQUIVO_CONFIG: String = "user://settings.cfg"
 var humanidade_maxima: float = 100.0
 var humanidade_atual: float = 100.0
 var tempo_sobrevivencia: float = 0.0
-var taxa_decaimento: float = 5.0 
+var taxa_decaimento: float = 4.0 
+
+# --- Variáveis de Dificuldade ---
+var multiplicador_dificuldade: float = 1.0
+var inimigo_vida_bonus: int = 0
+var limite_spawn_minimo: float = 0.5
+var multiplicador_dano_jogador: int = 1
+# --------------------------------
 
 var vida_maxima: int = 3
 var vida_atual: int = 3
@@ -30,8 +37,7 @@ func _ready() -> void:
 	bgm_player = AudioStreamPlayer.new()
 	add_child(bgm_player)
 	bgm_player.bus = "BGM"
-	bgm_player.stream = preload("res://audio/Ultimo_Sinal_SurviveGD.ogg") # ATENÇÃO: Atualize este caminho
-	bgm_player.play()
+	bgm_player.stream = preload("res://audio/Ultimo_Sinal_SurviveGD.ogg")
 	
 	_carregar_configuracoes_globais()
 
@@ -84,6 +90,9 @@ func resetar_estado() -> void:
 	tempo_sobrevivencia = 0.0
 	jogo_ativo = true
 	set_process(true)
+	
+	# Recarrega as configurações ao resetar para garantir que mudanças no menu sejam aplicadas
+	_carregar_configuracoes_globais()
 
 func salvar_high_score() -> void:
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -113,7 +122,26 @@ func _carregar_configuracoes_globais() -> void:
 		var modo_fullscreen = config.get_value("Video", "fullscreen", false)
 		if modo_fullscreen:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-			
+		
+		# Aplica as configurações de dificuldade
+		var diff = config.get_value("Jogo", "dificuldade", 1)
+		match diff:
+			0: # Fácil
+				multiplicador_dificuldade = 0.8
+				inimigo_vida_bonus = 0
+				limite_spawn_minimo = 0.8
+				multiplicador_dano_jogador = 1
+			1: # Normal
+				multiplicador_dificuldade = 1.0
+				inimigo_vida_bonus = 0
+				limite_spawn_minimo = 0.5
+				multiplicador_dano_jogador = 1
+			2: # Difícil
+				multiplicador_dificuldade = 1.5
+				inimigo_vida_bonus = 2
+				limite_spawn_minimo = 0.2
+				multiplicador_dano_jogador = 2
+
 func parar_musica() -> void:
 	if bgm_player and bgm_player.playing:
 		bgm_player.stop()
