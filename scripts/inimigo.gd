@@ -65,3 +65,8 @@ func piscar_dano() -> void:
 
 func morrer() -> void:
 	queue_free()
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("jogador"):
+		if body.has_method("receber_dano"):
+			body.receber_dano(1)
