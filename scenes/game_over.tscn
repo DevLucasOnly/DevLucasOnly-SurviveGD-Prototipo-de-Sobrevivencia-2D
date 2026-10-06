@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://2geksbptpi8d" path="res://assets/Menu/GameOver.png" id="1_wqhvx"]
 [ext_resource type="Texture2D" uid="uid://bqbs0qier1x20" path="res://assets/Menu/BotaoGameOver.png" id="2_tbwuq"]
 [ext_resource type="FontFile" uid="uid://dr13es5o7sqdy" path="res://assets/Fonte/SurviveGD_Pixel.ttf" id="4_racf3"]
+[ext_resource type="AudioStream" uid="uid://bmoumai6di8pn" path="res://audio/Game_Over_Ultimo_Humano.ogg" id="5_7m3ot"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_racf3"]
 atlas = ExtResource("2_tbwuq")
@@ -73,6 +74,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_racf3")
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
+
+[node name="GameOverAudio" type="AudioStreamPlayer" parent="." unique_id=607440540]
+stream = ExtResource("5_7m3ot")
+bus = &"BGM"
 
 [connection signal="mouse_entered" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_mouse_entered"]
 [connection signal="mouse_exited" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_mouse_exited"]

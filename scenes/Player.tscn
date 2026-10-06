@@ -136,6 +136,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=1449373304 groups=["jogador"]]
+motion_mode = 1
 script = ExtResource("1_i0ldb")
 speed = 80.0
 projetil_cena = ExtResource("2_3li8b")
@@ -164,3 +165,6 @@ position_smoothing_speed = 10.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=518234097]
 position = Vector2(-3, 0)
+
+[node name="TimerInvulnerabilidade" type="Timer" parent="." unique_id=1866591714]
+one_shot = true

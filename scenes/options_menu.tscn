@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://46kq374b7g0n"]
+
+[ext_resource type="Script" uid="uid://b6i54hoxof86n" path="res://scripts/options_menu.gd" id="1_lfjc7"]
+[ext_resource type="Texture2D" uid="uid://d1qlsa2sylf0v" path="res://assets/Menu/background menu_opcoes.png" id="1_liyum"]
+[ext_resource type="FontFile" uid="uid://dr13es5o7sqdy" path="res://assets/Fonte/SurviveGD_Pixel.ttf" id="2_ijpji"]
+[ext_resource type="Texture2D" uid="uid://dfdax6j3wxivt" path="res://assets/Menu/botoes_menu_opcoes.png" id="3_hm4m4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfjc7"]
+atlas = ExtResource("3_hm4m4")
+region = Rect2(52.38279, 944.53723, 1041.39, 261.9839)
+
+[node name="OptionsMenu" type="Control" unique_id=984315477]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_lfjc7")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2145751729]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.025
+anchor_top = -0.95
+anchor_right = 19.125
+anchor_bottom = 11.175
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_liyum")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=1678603957]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 132.0
+offset_right = 548.0
+offset_bottom = 348.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer" unique_id=1216203163]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=751530554]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Volume Master"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=710312146]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label2" type="Label" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=2026150267]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Volume Música"
+horizontal_alignment = 1
+
+[node name="BGMSlider" type="HSlider" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=580352516]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="FullscreenBtn" type="CheckButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=2040666167]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "TELA CHEIA"
+
+[node name="DificuldadeBtn" type="OptionButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=660730197]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+
+[node name="VoltarBtn" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1731951939]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_lfjc7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="value_changed" from="TextureRect/MarginContainer/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="TextureRect/MarginContainer/VBoxContainer/BGMSlider" to="." method="_on_bgm_slider_value_changed"]
+[connection signal="toggled" from="TextureRect/MarginContainer/VBoxContainer/FullscreenBtn" to="." method="_on_fullscreen_btn_toggled"]
+[connection signal="item_selected" from="TextureRect/MarginContainer/VBoxContainer/DificuldadeBtn" to="." method="_on_dificuldade_btn_item_selected"]
+[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/VoltarBtn" to="." method="_on_voltar_btn_pressed"]
