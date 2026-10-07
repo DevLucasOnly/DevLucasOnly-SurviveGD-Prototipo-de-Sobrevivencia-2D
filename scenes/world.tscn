@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bnv7fky8vgaxd" path="res://assets/Menu/BotaoPausa.png" id="9_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://dxouhy3fgo6if" path="res://scenes/spawner_inimigos.tscn" id="10_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://b37ssitr6spcg" path="res://scenes/game_over.tscn" id="10_w7kh3"]
+[ext_resource type="Script" uid="uid://btqofd0hugias" path="res://scripts/tempo.gd" id="12_q5onr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7kh3"]
 texture = ExtResource("3_4mrxx")
@@ -7019,6 +7020,10 @@ stretch_mode = 5
 
 [node name="SpawnerInimigos" parent="." unique_id=781631048 instance=ExtResource("10_e3hyu")]
 inimigo_cena = ExtResource("6_qfnet")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=84258641]
+color = Color(0.25565878, 0.25565878, 0.25565878, 1)
+script = ExtResource("12_q5onr")
 
 [connection signal="mouse_entered" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_entered"]
 [connection signal="mouse_exited" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_exited"]

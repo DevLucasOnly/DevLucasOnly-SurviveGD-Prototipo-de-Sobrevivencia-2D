@@ -343,6 +343,18 @@ damping_min = 100.00001
 damping_max = 100.00001
 color = Color(0.35251984, 0.037441414, 4.813075e-08, 1)
 
+[sub_resource type="Gradient" id="Gradient_mdl7e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_snp6e"]
+gradient = SubResource("Gradient_mdl7e")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.4869565, 0.5304348)
+fill_to = Vector2(0.726087, 0.54347825)
+
 [node name="Player" type="CharacterBody2D" unique_id=1449373304 groups=["jogador"]]
 motion_mode = 1
 script = ExtResource("1_i0ldb")
@@ -389,3 +401,6 @@ lifetime = 0.3
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_snp6e")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1966433158]
+texture = SubResource("GradientTexture2D_snp6e")
