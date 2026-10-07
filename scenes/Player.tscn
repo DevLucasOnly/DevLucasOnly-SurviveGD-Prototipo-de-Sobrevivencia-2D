@@ -343,5 +343,12 @@ position_smoothing_speed = 10.0
 [node name="Muzzle" type="Marker2D" parent="." unique_id=518234097]
 position = Vector2(-2, 1)
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Muzzle" unique_id=481053874]
+emitting = false
+amount = 15
+amount_ratio = 0.15
+one_shot = true
+explosiveness = 1.0
+
 [node name="TimerInvulnerabilidade" type="Timer" parent="." unique_id=1866591714]
 one_shot = true
