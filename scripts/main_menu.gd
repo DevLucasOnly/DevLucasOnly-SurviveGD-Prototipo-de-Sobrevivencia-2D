@@ -3,8 +3,8 @@ extends Control
 @onready var btn_jogar = $BotoesContainer/BtnJogar
 @onready var btn_opcoes = $BotoesContainer/BtnOpcoes
 @onready var btn_sair = $BotoesContainer/BtnSair
-
 func _ready() -> void:
+	btn_jogar.grab_focus()
 	GameManager.tocar_musica()
 
 func _on_btn_jogar_pressed() -> void:

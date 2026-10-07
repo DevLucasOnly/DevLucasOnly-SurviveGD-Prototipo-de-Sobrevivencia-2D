@@ -82,13 +82,23 @@ func atirar() -> void:
 		
 	var tiro = projetil_cena.instantiate()
 	get_tree().current_scene.add_child(tiro) 
-	
 	tiro.global_position = muzzle.global_position
 	
-	var direcao_mouse = (get_global_mouse_position() - global_position).normalized()
-	tiro.direction = direcao_mouse
-	tiro.rotation = direcao_mouse.angle()
-	vfx_tiro.global_rotation = direcao_mouse.angle()
+	# Captura o vetor do analógico direito
+	var direcao_mira = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+	var vetor_final: Vector2
+	
+	if direcao_mira != Vector2.ZERO:
+		# Lógica Gamepad (Twin-Stick)
+		vetor_final = direcao_mira.normalized()
+	else:
+		# Fallback para Mouse
+		vetor_final = (get_global_mouse_position() - global_position).normalized()
+	
+	tiro.direction = vetor_final
+	tiro.rotation = vetor_final.angle()
+	
+	vfx_tiro.global_rotation = vetor_final.angle()
 	vfx_tiro.restart()
 
 func acionar_feedback_dano() -> void:
@@ -115,6 +125,9 @@ func receber_dano(quantidade: int) -> void:
 	acionar_feedback_dano()
 	_acionar_efeito_invulnerabilidade()
 	vfx_dano.restart()
+	# Dispara o feedback tátil no Gamepad
+	# device_id, motor_fraco, motor_forte, duracao_segundos
+	Input.start_joy_vibration(0, 0.4, 1.0, 0.25)
 
 func _acionar_efeito_invulnerabilidade() -> void:
 	var tween = create_tween().set_loops()

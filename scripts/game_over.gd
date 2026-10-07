@@ -10,6 +10,7 @@ extends CanvasLayer
 func _ready() -> void:
 	painel.hide()
 	GameManager.game_over.connect(_acionar_game_over)
+	btn_restart.grab_focus()
 
 	# Ligações de clique
 	btn_restart.pressed.connect(_reiniciar)
