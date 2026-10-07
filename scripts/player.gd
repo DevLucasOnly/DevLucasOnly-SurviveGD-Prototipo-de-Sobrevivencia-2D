@@ -125,6 +125,9 @@ func receber_dano(quantidade: int) -> void:
 	acionar_feedback_dano()
 	_acionar_efeito_invulnerabilidade()
 	vfx_dano.restart()
+	# Dispara o feedback tátil no Gamepad
+	# device_id, motor_fraco, motor_forte, duracao_segundos
+	Input.start_joy_vibration(0, 0.4, 1.0, 0.25)
 
 func _acionar_efeito_invulnerabilidade() -> void:
 	var tween = create_tween().set_loops()
