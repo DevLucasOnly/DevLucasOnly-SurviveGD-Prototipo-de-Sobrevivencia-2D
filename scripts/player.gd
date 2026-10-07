@@ -14,6 +14,7 @@ var invulneravel: bool = false
 @onready var muzzle: Marker2D = $Muzzle 
 @onready var timer_invulnerabilidade: Timer = $TimerInvulnerabilidade
 @onready var vfx_tiro: GPUParticles2D = $Muzzle/GPUParticles2D
+@onready var vfx_dano: GPUParticles2D = $VFXDano
 
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
@@ -113,6 +114,7 @@ func receber_dano(quantidade: int) -> void:
 	GameManager.aplicar_dano_jogador(quantidade)
 	acionar_feedback_dano()
 	_acionar_efeito_invulnerabilidade()
+	vfx_dano.restart()
 
 func _acionar_efeito_invulnerabilidade() -> void:
 	var tween = create_tween().set_loops()
