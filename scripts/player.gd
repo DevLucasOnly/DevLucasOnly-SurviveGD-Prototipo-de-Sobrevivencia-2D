@@ -13,6 +13,7 @@ var invulneravel: bool = false
 @onready var camera: Camera2D = $Camera2D
 @onready var muzzle: Marker2D = $Muzzle 
 @onready var timer_invulnerabilidade: Timer = $TimerInvulnerabilidade
+@onready var vfx_tiro: GPUParticles2D = $Muzzle/GPUParticles2D
 
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
@@ -86,6 +87,7 @@ func atirar() -> void:
 	var direcao_mouse = (get_global_mouse_position() - global_position).normalized()
 	tiro.direction = direcao_mouse
 	tiro.rotation = direcao_mouse.angle()
+	vfx_tiro.restart()
 
 func acionar_feedback_dano() -> void:
 	shake_intensity = 15.0
