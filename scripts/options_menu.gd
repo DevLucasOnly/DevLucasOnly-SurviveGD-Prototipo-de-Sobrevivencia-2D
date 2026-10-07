@@ -5,6 +5,7 @@ const ARQUIVO_CONFIG = "user://settings.cfg"
 @onready var bgm_slider: HSlider = $TextureRect/MarginContainer/VBoxContainer/BGMSlider
 @onready var fullscreen_btn: CheckButton = $TextureRect/MarginContainer/VBoxContainer/FullscreenBtn
 @onready var dificuldade_btn: OptionButton = $TextureRect/MarginContainer/VBoxContainer/DificuldadeBtn
+@onready var voltar_btn: TextureButton = $TextureRect/MarginContainer/VBoxContainer/VoltarBtn
 
 var config = ConfigFile.new()
 var master_bus_index: int
@@ -69,3 +70,10 @@ func carregar_opcoes() -> void:
 	var diff = config.get_value("Jogo", "dificuldade", 1)
 	dificuldade_btn.selected = diff
 	dificuldade_atual = diff
+
+# --- Feedback Visual (Hover) ---
+func _on_voltar_btn_mouse_entered() -> void:
+	voltar_btn.modulate = Color(0.7, 0.7, 0.7)
+
+func _on_voltar_btn_mouse_exited() -> void:
+	voltar_btn.modulate = Color(1, 1, 1)
