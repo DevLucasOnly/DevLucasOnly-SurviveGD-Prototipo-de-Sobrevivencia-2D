@@ -58,18 +58,16 @@ func _estado_move() -> void:
 	if velocity == Vector2.ZERO:
 		estado_atual = Estado.IDLE
 	else:
-		if abs(velocity.x) > abs(velocity.y):
-			direcao_atual = "side"
-			anim.play("walk_side")
-			sprite.flip_h = velocity.x < 0 
-		elif velocity.y > 0:
-			direcao_atual = "down"
-			anim.play("walk_down")
-			sprite.flip_h = false 
-		else:
-			direcao_atual = "up"
-			anim.play("walk_up")
-			sprite.flip_h = false 
+		var angulo = velocity.angle()
+		var indice = int(snapped(angulo, PI/4) / (PI/4))
+		
+		if indice < 0:
+			indice += 8
+			
+		var array_direcoes = ["right", "down_right", "down", "down_left", "left", "up_left", "up", "up_right"]
+		direcao_atual = array_direcoes[indice]
+		
+		anim.play("walk_" + direcao_atual)
 
 func _estado_dead() -> void:
 	velocity = Vector2.ZERO
