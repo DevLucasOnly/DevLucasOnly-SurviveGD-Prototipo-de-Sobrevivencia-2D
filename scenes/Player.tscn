@@ -352,8 +352,8 @@ gradient = SubResource("Gradient_mdl7e")
 width = 256
 height = 256
 fill = 1
-fill_from = Vector2(0.59565216, 0.49565217)
-fill_to = Vector2(1, 0.5)
+fill_from = Vector2(0.4869565, 0.5304348)
+fill_to = Vector2(0.726087, 0.54347825)
 
 [node name="Player" type="CharacterBody2D" unique_id=1449373304 groups=["jogador"]]
 motion_mode = 1
