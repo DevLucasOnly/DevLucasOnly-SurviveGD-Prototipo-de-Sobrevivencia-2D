@@ -314,6 +314,35 @@ _data = {
 &"walk_up_right": SubResource("Animation_61ith")
 }
 
+[sub_resource type="Gradient" id="Gradient_3li8b"]
+offsets = PackedFloat32Array(0, 0.36065573, 0.6803279, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.7010704, 0.39702848, 0.09360816, 1, 0.57377046, 0.57377046, 0.57377046, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3li8b"]
+gradient = SubResource("Gradient_3li8b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3li8b"]
+particle_flag_disable_z = true
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+damping_min = 100.00001
+damping_max = 100.00001
+scale_min = 0.5
+scale_max = 0.5
+color = Color(1, 0.77254903, 0.45882353, 1)
+color_ramp = SubResource("GradientTexture1D_3li8b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_snp6e"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+damping_min = 100.00001
+damping_max = 100.00001
+color = Color(0.35251984, 0.037441414, 4.813075e-08, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=1449373304 groups=["jogador"]]
 motion_mode = 1
 script = ExtResource("1_i0ldb")
@@ -343,5 +372,20 @@ position_smoothing_speed = 10.0
 [node name="Muzzle" type="Marker2D" parent="." unique_id=518234097]
 position = Vector2(-2, 1)
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Muzzle" unique_id=481053874]
+emitting = false
+amount = 15
+amount_ratio = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3li8b")
+
 [node name="TimerInvulnerabilidade" type="Timer" parent="." unique_id=1866591714]
 one_shot = true
+
+[node name="VFXDano" type="GPUParticles2D" parent="." unique_id=722232803]
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_snp6e")

@@ -13,6 +13,8 @@ var invulneravel: bool = false
 @onready var camera: Camera2D = $Camera2D
 @onready var muzzle: Marker2D = $Muzzle 
 @onready var timer_invulnerabilidade: Timer = $TimerInvulnerabilidade
+@onready var vfx_tiro: GPUParticles2D = $Muzzle/GPUParticles2D
+@onready var vfx_dano: GPUParticles2D = $VFXDano
 
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
@@ -86,6 +88,8 @@ func atirar() -> void:
 	var direcao_mouse = (get_global_mouse_position() - global_position).normalized()
 	tiro.direction = direcao_mouse
 	tiro.rotation = direcao_mouse.angle()
+	vfx_tiro.global_rotation = direcao_mouse.angle()
+	vfx_tiro.restart()
 
 func acionar_feedback_dano() -> void:
 	shake_intensity = 15.0
@@ -110,6 +114,7 @@ func receber_dano(quantidade: int) -> void:
 	GameManager.aplicar_dano_jogador(quantidade)
 	acionar_feedback_dano()
 	_acionar_efeito_invulnerabilidade()
+	vfx_dano.restart()
 
 func _acionar_efeito_invulnerabilidade() -> void:
 	var tween = create_tween().set_loops()
