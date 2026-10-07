@@ -87,6 +87,7 @@ func atirar() -> void:
 	var direcao_mouse = (get_global_mouse_position() - global_position).normalized()
 	tiro.direction = direcao_mouse
 	tiro.rotation = direcao_mouse.angle()
+	vfx_tiro.global_rotation = direcao_mouse.angle()
 	vfx_tiro.restart()
 
 func acionar_feedback_dano() -> void:
