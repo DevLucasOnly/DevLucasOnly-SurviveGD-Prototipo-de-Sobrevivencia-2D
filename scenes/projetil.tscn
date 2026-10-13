@@ -7,6 +7,16 @@
 radius = 0.33216184
 height = 2.575369
 
+[sub_resource type="Gradient" id="Gradient_mdl7e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ri8ot"]
+gradient = SubResource("Gradient_mdl7e")
+fill = 1
+fill_from = Vector2(0.526087, 0.49565217)
+fill_to = Vector2(0.8608696, 0.5173913)
+
 [node name="Projetil" type="Area2D" unique_id=1582131438]
 script = ExtResource("1_ri8ot")
 
@@ -23,6 +33,9 @@ scale = Vector2(6.0211606, 0.7765878)
 shape = SubResource("CapsuleShape2D_snp6e")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=8279991]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=387065890]
+texture = SubResource("GradientTexture2D_ri8ot")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

@@ -5,6 +5,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	hide()
+	btn_continuar.grab_focus()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

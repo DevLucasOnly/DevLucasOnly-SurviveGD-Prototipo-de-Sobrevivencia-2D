@@ -79,9 +79,13 @@ horizontal_alignment = 1
 stream = ExtResource("5_7m3ot")
 bus = &"BGM"
 
+[connection signal="focus_entered" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_restart_hover_in"]
+[connection signal="focus_exited" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_restart_hover_out"]
 [connection signal="mouse_entered" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_mouse_entered"]
 [connection signal="mouse_exited" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_mouse_exited"]
 [connection signal="pressed" from="PainelGameOver/VBoxContainer/BtnTenteNovamente" to="." method="_on_btn_tente_novamente_pressed"]
+[connection signal="focus_entered" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_hover_in"]
+[connection signal="focus_exited" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_hover_out"]
 [connection signal="mouse_entered" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_mouse_entered"]
 [connection signal="mouse_exited" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_mouse_exited"]
 [connection signal="pressed" from="PainelGameOver/VBoxContainer/BtnSair" to="." method="_on_btn_sair_pressed"]

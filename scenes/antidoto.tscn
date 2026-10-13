@@ -6,6 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5onr"]
 size = Vector2(4, 7)
 
+[sub_resource type="Gradient" id="Gradient_mdl7e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_io8bx"]
+gradient = SubResource("Gradient_mdl7e")
+fill = 1
+fill_from = Vector2(0.5043478, 0.5217391)
+fill_to = Vector2(0.5521739, 0.5217391)
+
 [node name="Antidoto" type="Area2D" unique_id=1307615855]
 script = ExtResource("1_io8bx")
 
@@ -19,5 +29,8 @@ region_rect = Rect2(953.1819, 973.2728, 128.18188, 121.81824)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1338927591]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_q5onr")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1978092347]
+texture = SubResource("GradientTexture2D_io8bx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

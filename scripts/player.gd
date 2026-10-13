@@ -13,6 +13,8 @@ var invulneravel: bool = false
 @onready var camera: Camera2D = $Camera2D
 @onready var muzzle: Marker2D = $Muzzle 
 @onready var timer_invulnerabilidade: Timer = $TimerInvulnerabilidade
+@onready var vfx_tiro: GPUParticles2D = $Muzzle/GPUParticles2D
+@onready var vfx_dano: GPUParticles2D = $VFXDano
 
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
@@ -58,18 +60,16 @@ func _estado_move() -> void:
 	if velocity == Vector2.ZERO:
 		estado_atual = Estado.IDLE
 	else:
-		if abs(velocity.x) > abs(velocity.y):
-			direcao_atual = "side"
-			anim.play("walk_side")
-			sprite.flip_h = velocity.x < 0 
-		elif velocity.y > 0:
-			direcao_atual = "down"
-			anim.play("walk_down")
-			sprite.flip_h = false 
-		else:
-			direcao_atual = "up"
-			anim.play("walk_up")
-			sprite.flip_h = false 
+		var angulo = velocity.angle()
+		var indice = int(snapped(angulo, PI/4) / (PI/4))
+		
+		if indice < 0:
+			indice += 8
+			
+		var array_direcoes = ["right", "down_right", "down", "down_left", "left", "up_left", "up", "up_right"]
+		direcao_atual = array_direcoes[indice]
+		
+		anim.play("walk_" + direcao_atual)
 
 func _estado_dead() -> void:
 	velocity = Vector2.ZERO
@@ -82,12 +82,24 @@ func atirar() -> void:
 		
 	var tiro = projetil_cena.instantiate()
 	get_tree().current_scene.add_child(tiro) 
-	
 	tiro.global_position = muzzle.global_position
 	
-	var direcao_mouse = (get_global_mouse_position() - global_position).normalized()
-	tiro.direction = direcao_mouse
-	tiro.rotation = direcao_mouse.angle()
+	# Captura o vetor do analógico direito
+	var direcao_mira = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+	var vetor_final: Vector2
+	
+	if direcao_mira != Vector2.ZERO:
+		# Lógica Gamepad (Twin-Stick)
+		vetor_final = direcao_mira.normalized()
+	else:
+		# Fallback para Mouse
+		vetor_final = (get_global_mouse_position() - global_position).normalized()
+	
+	tiro.direction = vetor_final
+	tiro.rotation = vetor_final.angle()
+	
+	vfx_tiro.global_rotation = vetor_final.angle()
+	vfx_tiro.restart()
 
 func acionar_feedback_dano() -> void:
 	shake_intensity = 15.0
@@ -112,6 +124,10 @@ func receber_dano(quantidade: int) -> void:
 	GameManager.aplicar_dano_jogador(quantidade)
 	acionar_feedback_dano()
 	_acionar_efeito_invulnerabilidade()
+	vfx_dano.restart()
+	# Dispara o feedback tátil no Gamepad
+	# device_id, motor_fraco, motor_forte, duracao_segundos
+	Input.start_joy_vibration(0, 0.4, 1.0, 0.25)
 
 func _acionar_efeito_invulnerabilidade() -> void:
 	var tween = create_tween().set_loops()
