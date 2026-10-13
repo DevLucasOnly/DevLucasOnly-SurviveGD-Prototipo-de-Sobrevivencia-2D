@@ -404,3 +404,5 @@ process_material = SubResource("ParticleProcessMaterial_snp6e")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1966433158]
 texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="SfxAndar" type="AudioStreamPlayer2D" parent="." unique_id=282830060]
