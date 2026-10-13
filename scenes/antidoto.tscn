@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c70kq3id7lwsu" path="res://scripts/antidoto.gd" id="1_io8bx"]
 [ext_resource type="Texture2D" uid="uid://bxh8k2kcdxc2k" path="res://assets/Player/insectoides.png" id="2_io8bx"]
+[ext_resource type="AudioStream" uid="uid://bfts21le3glny" path="res://audio/Coleta_Antidoto.ogg" id="3_sh1vo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5onr"]
 size = Vector2(4, 7)
@@ -32,5 +33,8 @@ shape = SubResource("RectangleShape2D_q5onr")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1978092347]
 texture = SubResource("GradientTexture2D_io8bx")
+
+[node name="SfxColetar" type="AudioStreamPlayer2D" parent="." unique_id=775213505]
+stream = ExtResource("3_sh1vo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
