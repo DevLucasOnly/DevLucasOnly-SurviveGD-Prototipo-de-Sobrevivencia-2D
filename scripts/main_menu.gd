@@ -6,6 +6,8 @@ extends Control
 func _ready() -> void:
 	btn_jogar.grab_focus()
 	GameManager.tocar_musica()
+	if OS.has_feature("web"):
+        btn_sair.hide()
 
 func _on_btn_jogar_pressed() -> void:
 	GameManager.resetar_estado()
