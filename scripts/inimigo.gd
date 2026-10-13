@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @onready var sfx_player: AudioStreamPlayer2D = $SFXPlayer
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var anim: AnimationPlayer = $AnimationPlayer 
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var sfx_impacto: AudioStreamPlayer2D = $SfxImpacto
 
 @export var velocidade_base: float = 70.0
 @export var vida_maxima: int = 3
@@ -50,7 +51,7 @@ func acionar_som_sfx() -> void:
 
 func receber_dano(quantidade: int) -> void:
 	vida_atual -= quantidade
-	
+	sfx_impacto.play()
 	if vida_atual <= 0:
 		morrer()
 	else:
