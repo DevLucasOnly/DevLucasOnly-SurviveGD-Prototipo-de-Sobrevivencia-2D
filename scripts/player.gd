@@ -16,6 +16,7 @@ var invulneravel: bool = false
 @onready var vfx_tiro: GPUParticles2D = $Muzzle/GPUParticles2D
 @onready var vfx_dano: GPUParticles2D = $VFXDano
 @onready var sfx_andar: AudioStreamPlayer2D = $SfxAndar
+@onready var sfx_dano_jogador: AudioStreamPlayer2D = $SfxDano
 
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
@@ -135,6 +136,8 @@ func receber_dano(quantidade: int) -> void:
 	# Dispara o feedback tátil no Gamepad
 	# device_id, motor_fraco, motor_forte, duracao_segundos
 	Input.start_joy_vibration(0, 0.4, 1.0, 0.25)
+
+	sfx_dano_jogador.play()
 
 func _acionar_efeito_invulnerabilidade() -> void:
 	var tween = create_tween().set_loops()
