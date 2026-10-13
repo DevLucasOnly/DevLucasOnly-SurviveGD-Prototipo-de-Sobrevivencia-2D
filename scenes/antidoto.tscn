@@ -19,6 +19,7 @@ fill_to = Vector2(0.5521739, 0.5217391)
 
 [node name="Antidoto" type="Area2D" unique_id=1307615855]
 script = ExtResource("1_io8bx")
+cura_valor = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472397336]
 position = Vector2(5.9604645e-08, 0.49999982)
@@ -38,3 +39,4 @@ texture = SubResource("GradientTexture2D_io8bx")
 stream = ExtResource("3_sh1vo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="SfxColetar" to="." method="queue_free"]
