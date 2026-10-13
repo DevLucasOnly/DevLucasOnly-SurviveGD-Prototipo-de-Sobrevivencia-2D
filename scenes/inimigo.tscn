@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wfqrpt5pipi3" path="res://scripts/inimigo.gd" id="1_61lki"]
 [ext_resource type="Texture2D" uid="uid://bxh8k2kcdxc2k" path="res://assets/Player/insectoides.png" id="2_21tsg"]
 [ext_resource type="AudioStream" uid="uid://wppj87tyfxpc" path="res://audio/Insectoide_Passos_Loop.wav" id="3_21tsg"]
+[ext_resource type="AudioStream" uid="uid://d3jhk8jesrpqr" path="res://audio/Impacto_Insectoide.ogg" id="4_4er16"]
 
 [sub_resource type="Animation" id="Animation_4er16"]
 length = 0.001
@@ -98,7 +99,6 @@ radius = 6.0
 [node name="Inimigo" type="CharacterBody2D" unique_id=1514004947]
 motion_mode = 1
 script = ExtResource("1_61lki")
-velocidade = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1055419145]
 position = Vector2(-0.48437476, -0.56250006)
@@ -122,5 +122,8 @@ libraries/ = SubResource("AnimationLibrary_rmr57")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=66543122]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_snp6e")
+
+[node name="SfxImpacto" type="AudioStreamPlayer2D" parent="." unique_id=400763785]
+stream = ExtResource("4_4er16")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
