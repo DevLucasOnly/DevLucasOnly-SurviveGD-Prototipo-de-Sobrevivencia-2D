@@ -15,6 +15,7 @@ var invulneravel: bool = false
 @onready var timer_invulnerabilidade: Timer = $TimerInvulnerabilidade
 @onready var vfx_tiro: GPUParticles2D = $Muzzle/GPUParticles2D
 @onready var vfx_dano: GPUParticles2D = $VFXDano
+@onready var sfx_andar: AudioStreamPlayer2D = $SfxAndar
 
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
@@ -42,8 +43,14 @@ func _physics_process(_delta: float) -> void:
 			_estado_move()
 		Estado.DEAD:
 			_estado_dead()
-	
+
 	move_and_slide()
+
+	if velocity.length() > 0:
+		if not sfx_andar.playing:
+			sfx_andar.play()
+	else:
+		sfx_andar.stop()
 
 func _estado_idle() -> void:
 	velocity = Vector2.ZERO
