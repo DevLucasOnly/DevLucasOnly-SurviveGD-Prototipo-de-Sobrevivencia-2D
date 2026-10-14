@@ -434,7 +434,7 @@ projetil_cena = ExtResource("2_3li8b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=815597746]
 position = Vector2(0, -0.086000144)
-scale = Vector2(0.008, 0.0077831023)
+scale = Vector2(0.01, 0.01)
 sprite_frames = SubResource("SpriteFrames_snp6e")
 animation = &"walk_down_right"
 frame_progress = 0.17390276

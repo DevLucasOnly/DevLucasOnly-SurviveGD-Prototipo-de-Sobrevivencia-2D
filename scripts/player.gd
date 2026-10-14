@@ -8,8 +8,8 @@ var invulneravel: bool = false
 @export var speed: float = 300.0
 @export var projetil_cena: PackedScene 
 
-@onready var anim: AnimationPlayer = $AnimationPlayer
-@onready var sprite: Sprite2D = $Sprite2D
+# Referência unificada para o AnimatedSprite2D
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
 @onready var muzzle: Marker2D = $Muzzle 
 @onready var timer_invulnerabilidade: Timer = $TimerInvulnerabilidade
@@ -94,15 +94,12 @@ func atirar() -> void:
 	get_tree().current_scene.add_child(tiro) 
 	tiro.global_position = muzzle.global_position
 	
-	# Captura o vetor do analógico direito
 	var direcao_mira = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	var vetor_final: Vector2
 	
 	if direcao_mira != Vector2.ZERO:
-		# Lógica Gamepad (Twin-Stick)
 		vetor_final = direcao_mira.normalized()
 	else:
-		# Fallback para Mouse
 		vetor_final = (get_global_mouse_position() - global_position).normalized()
 	
 	tiro.direction = vetor_final
@@ -135,25 +132,24 @@ func receber_dano(quantidade: int) -> void:
 	acionar_feedback_dano()
 	_acionar_efeito_invulnerabilidade()
 	vfx_dano.restart()
-	# Dispara o feedback tátil no Gamepad
-	# device_id, motor_fraco, motor_forte, duracao_segundos
-	Input.start_joy_vibration(0, 0.4, 1.0, 0.25)
 
+	Input.start_joy_vibration(0, 0.4, 1.0, 0.25)
 	sfx_dano_jogador.play()
 
 func _acionar_efeito_invulnerabilidade() -> void:
 	var tween = create_tween().set_loops()
-	tween.tween_property(sprite, "modulate:a", 0.3, 0.1)
-	tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
+	
+	# Atualizado para alterar a transparência do nó anim (AnimatedSprite2D)
+	tween.tween_property(anim, "modulate:a", 0.3, 0.1)
+	tween.tween_property(anim, "modulate:a", 1.0, 0.1)
 	
 	await timer_invulnerabilidade.timeout
 	
 	tween.kill()
-	sprite.modulate.a = 1.0
+	anim.modulate.a = 1.0
 	invulneravel = false
 
 func atualizar_apontador() -> void:
-	# Altera a busca para o grupo correto
 	var itens_alvo = get_tree().get_nodes_in_group("antidoto")
 	
 	if itens_alvo.is_empty():
