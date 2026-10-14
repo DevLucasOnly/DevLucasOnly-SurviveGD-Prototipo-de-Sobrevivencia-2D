@@ -13,6 +13,30 @@
 [ext_resource type="Script" uid="uid://btqofd0hugias" path="res://scripts/tempo.gd" id="12_q5onr"]
 [ext_resource type="AudioStream" uid="uid://cwjdsncs3n2mw" path="res://audio/Ultimo_Humano_Gameplay_Loop.ogg" id="13_jhx03"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6f14"]
+size = Vector2(67, 207.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_el5as"]
+size = Vector2(87, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5r53"]
+size = Vector2(292, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k77c"]
+size = Vector2(130, 232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dcku"]
+size = Vector2(130, 229)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkmeo"]
+size = Vector2(32, 87.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4btm"]
+size = Vector2(267, 191)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m50y4"]
+size = Vector2(75, 70)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snp6e"]
 size = Vector2(2498, 50)
 
@@ -44,6 +68,92 @@ texture = ExtResource("3_q5onr")
 
 [node name="Player" parent="." unique_id=1449373304 instance=ExtResource("1_nnsk1")]
 position = Vector2(279, 7)
+
+[node name="ColisãoMapa" type="StaticBody2D" parent="." unique_id=1902838922]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisãoMapa" unique_id=1273372504]
+position = Vector2(-112.5, -182.5)
+shape = SubResource("RectangleShape2D_n6f14")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ColisãoMapa" unique_id=766576736]
+position = Vector2(524.5, -93)
+shape = SubResource("RectangleShape2D_el5as")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ColisãoMapa" unique_id=1261850026]
+position = Vector2(961, -264)
+shape = SubResource("RectangleShape2D_e5r53")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ColisãoMapa" unique_id=424205623]
+position = Vector2(845, 322)
+shape = SubResource("RectangleShape2D_8k77c")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="ColisãoMapa" unique_id=1429609286]
+position = Vector2(1082, 321.5)
+shape = SubResource("RectangleShape2D_4dcku")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="ColisãoMapa" unique_id=1360952567]
+position = Vector2(211, -633)
+shape = SubResource("RectangleShape2D_dkmeo")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="ColisãoMapa" unique_id=1447155594]
+position = Vector2(377, -632.625)
+shape = SubResource("RectangleShape2D_dkmeo")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="ColisãoMapa" unique_id=1533716402]
+position = Vector2(211, 666.6875)
+shape = SubResource("RectangleShape2D_dkmeo")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="ColisãoMapa" unique_id=287751273]
+position = Vector2(378, 667)
+shape = SubResource("RectangleShape2D_dkmeo")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="ColisãoMapa" unique_id=1347385207]
+position = Vector2(-389.5, 287.5)
+shape = SubResource("RectangleShape2D_w4btm")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="ColisãoMapa" unique_id=214924081]
+position = Vector2(435.5, -104)
+shape = SubResource("RectangleShape2D_m50y4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=1407730380]
+polygon = PackedVector2Array(411, -146, 411, -188, 401, -217, 408, -230, 417, -247, 436, -266, 458, -267, 480, -254, 500, -231, 508, -212, 510, -185, 502, -166, 483, -159, 472, -155, 472, -141)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=2077255741]
+polygon = PackedVector2Array(-294, -139, -341, -137, -339, -249, -314, -266, -281, -284, -248, -269, -223, -252, -220, -232, -215, -232, -215, -137, -224, -137, -224, -112, -264, -109, -266, -142)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=1704770484]
+polygon = PackedVector2Array(-501, -138, -551, -138, -549, -233, -544, -250, -520, -267, -484, -283, -455, -270, -428, -248, -421, -234, -421, -137, -436, -139, -436, -113, -474, -111, -476, -140)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=1167694683]
+polygon = PackedVector2Array(-540, -713, -575, -729, -588, -767, -579, -805, -547, -824, -511, -821, -484, -796, -477, -766, -483, -729, -508, -713)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=1055275978]
+polygon = PackedVector2Array(1102, -712, 1067, -729, 1056, -762, 1064, -805, 1096, -823, 1135, -823, 1160, -802, 1168, -762, 1159, -728, 1133, -712)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=97301766]
+polygon = PackedVector2Array(1110, 837, 1089, 827, 1072, 803, 1061, 774, 1076, 740, 1105, 721, 1144, 717, 1164, 730, 1178, 756, 1182, 784, 1176, 810, 1162, 828, 1134, 842)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=693928127]
+polygon = PackedVector2Array(-576, 836, -597, 814, -614, 784, -604, 751, -583, 731, -543, 719, -520, 721, -499, 737, -484, 773, -486, 807, -505, 826, -532, 839)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=723998280]
+polygon = PackedVector2Array(-914, 872, -893, 872, -891, 889, -874, 891, -870, 905, -869, 928, -871, 941, -916, 942)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=945368468]
+polygon = PackedVector2Array(1456, 939, 1455, 904, 1464, 890, 1474, 892, 1476, 870, 1504, 870, 1504, 942)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=84331400]
+polygon = PackedVector2Array(1498, -897, 1459, -895, 1457, -916, 1440, -918, 1439, -962, 1502, -963)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=2004301015]
+polygon = PackedVector2Array(-915, -897, -872, -896, -872, -919, -855, -919, -855, -960, -914, -961)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=421993916]
+polygon = PackedVector2Array(1148, 413, 1191, 413, 1189, 230, 1174, 229, 1171, 210, 1146, 208, 1141, 180, 1042, 181, 1041, 204)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="ColisãoMapa" unique_id=129456325]
+polygon = PackedVector2Array(955, 410, 759, 410, 761, 208, 789, 207, 791, 175, 814, 178, 815, 184, 946, 182, 948, 205, 956, 207)
 
 [node name="Parede_Topo" type="StaticBody2D" parent="." unique_id=15322827]
 
@@ -79,31 +189,46 @@ cura_valor = 30.0
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1937644198]
 
 [node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1878521044]
-position = Vector2(-599, 505)
+position = Vector2(-657, 556)
+
+[node name="Marker2D147" type="Marker2D" parent="SpawnPoints" unique_id=1350194691]
+position = Vector2(-622, 435)
+
+[node name="Marker2D148" type="Marker2D" parent="SpawnPoints" unique_id=472131683]
+position = Vector2(-370, 459)
+
+[node name="Marker2D149" type="Marker2D" parent="SpawnPoints" unique_id=1056559553]
+position = Vector2(-315, -684)
+
+[node name="Marker2D150" type="Marker2D" parent="SpawnPoints" unique_id=1588815299]
+position = Vector2(845, 797)
+
+[node name="Marker2D151" type="Marker2D" parent="SpawnPoints" unique_id=1911891905]
+position = Vector2(693, 876)
 
 [node name="Marker2D44" type="Marker2D" parent="SpawnPoints" unique_id=98161863]
-position = Vector2(1289, -803)
+position = Vector2(1368, -751)
 
 [node name="Marker2D43" type="Marker2D" parent="SpawnPoints" unique_id=405237722]
 position = Vector2(278, -800)
 
 [node name="Marker2D42" type="Marker2D" parent="SpawnPoints" unique_id=1164719773]
-position = Vector2(-392, -666)
+position = Vector2(-754, -657)
 
 [node name="Marker2D41" type="Marker2D" parent="SpawnPoints" unique_id=1281537962]
 position = Vector2(1335, -16)
 
 [node name="Marker2D40" type="Marker2D" parent="SpawnPoints" unique_id=2130331533]
-position = Vector2(903, 42)
+position = Vector2(873, 94)
 
 [node name="Marker2D39" type="Marker2D" parent="SpawnPoints" unique_id=318270742]
-position = Vector2(565, 208)
+position = Vector2(668, 158)
 
 [node name="Marker2D38" type="Marker2D" parent="SpawnPoints" unique_id=57806079]
-position = Vector2(154, 246)
+position = Vector2(144, 154)
 
 [node name="Marker2D37" type="Marker2D" parent="SpawnPoints" unique_id=1687167920]
-position = Vector2(875, 308)
+position = Vector2(984, 404)
 
 [node name="Marker2D36" type="Marker2D" parent="SpawnPoints" unique_id=227582109]
 position = Vector2(851, -455)
@@ -115,25 +240,160 @@ position = Vector2(1307, -237)
 position = Vector2(1127, -524)
 
 [node name="Marker2D33" type="Marker2D" parent="SpawnPoints" unique_id=503700134]
-position = Vector2(910, -766)
+position = Vector2(851, -852)
 
 [node name="Marker2D32" type="Marker2D" parent="SpawnPoints" unique_id=2095197807]
 position = Vector2(578, -634)
 
 [node name="Marker2D31" type="Marker2D" parent="SpawnPoints" unique_id=1768312283]
-position = Vector2(900, -196)
+position = Vector2(901, -134)
 
 [node name="Marker2D30" type="Marker2D" parent="SpawnPoints" unique_id=1321907890]
-position = Vector2(1120, 736)
+position = Vector2(881, 897)
 
 [node name="Marker2D29" type="Marker2D" parent="SpawnPoints" unique_id=1393637258]
 position = Vector2(-216, 736)
 
+[node name="Marker2D102" type="Marker2D" parent="SpawnPoints" unique_id=1450499860]
+position = Vector2(39, 739)
+
+[node name="Marker2D103" type="Marker2D" parent="SpawnPoints" unique_id=1299917384]
+position = Vector2(294, 791)
+
+[node name="Marker2D104" type="Marker2D" parent="SpawnPoints" unique_id=1899132128]
+position = Vector2(487, 763)
+
+[node name="Marker2D105" type="Marker2D" parent="SpawnPoints" unique_id=1877901724]
+position = Vector2(290, 573)
+
+[node name="Marker2D106" type="Marker2D" parent="SpawnPoints" unique_id=1339769145]
+position = Vector2(573, 570)
+
+[node name="Marker2D107" type="Marker2D" parent="SpawnPoints" unique_id=1507208806]
+position = Vector2(1043, 573)
+
+[node name="Marker2D108" type="Marker2D" parent="SpawnPoints" unique_id=1111458901]
+position = Vector2(1271, 476)
+
+[node name="Marker2D109" type="Marker2D" parent="SpawnPoints" unique_id=213047551]
+position = Vector2(1268, 127)
+
+[node name="Marker2D110" type="Marker2D" parent="SpawnPoints" unique_id=1803811373]
+position = Vector2(1068, 96)
+
+[node name="Marker2D111" type="Marker2D" parent="SpawnPoints" unique_id=279969330]
+position = Vector2(999, 10)
+
+[node name="Marker2D112" type="Marker2D" parent="SpawnPoints" unique_id=269706477]
+position = Vector2(1399, -201)
+
+[node name="Marker2D113" type="Marker2D" parent="SpawnPoints" unique_id=1388753402]
+position = Vector2(1282, -529)
+
+[node name="Marker2D114" type="Marker2D" parent="SpawnPoints" unique_id=1639878034]
+position = Vector2(699, -470)
+
+[node name="Marker2D115" type="Marker2D" parent="SpawnPoints" unique_id=2093710046]
+position = Vector2(-275, -539)
+
+[node name="Marker2D116" type="Marker2D" parent="SpawnPoints" unique_id=504157243]
+position = Vector2(98, -529)
+
+[node name="Marker2D117" type="Marker2D" parent="SpawnPoints" unique_id=109923406]
+position = Vector2(267, -274)
+
+[node name="Marker2D118" type="Marker2D" parent="SpawnPoints" unique_id=507149759]
+position = Vector2(56, -219)
+
+[node name="Marker2D119" type="Marker2D" parent="SpawnPoints" unique_id=2048036316]
+position = Vector2(-479, -312)
+
+[node name="Marker2D120" type="Marker2D" parent="SpawnPoints" unique_id=1297876874]
+position = Vector2(-320, -305)
+
+[node name="Marker2D121" type="Marker2D" parent="SpawnPoints" unique_id=2095436303]
+position = Vector2(-175, -201)
+
+[node name="Marker2D122" type="Marker2D" parent="SpawnPoints" unique_id=342306305]
+position = Vector2(-109, -325)
+
+[node name="Marker2D123" type="Marker2D" parent="SpawnPoints" unique_id=598969324]
+position = Vector2(-192, -332)
+
+[node name="Marker2D124" type="Marker2D" parent="SpawnPoints" unique_id=1158650222]
+position = Vector2(-492, -90)
+
+[node name="Marker2D125" type="Marker2D" parent="SpawnPoints" unique_id=714450249]
+position = Vector2(-281, -93)
+
+[node name="Marker2D126" type="Marker2D" parent="SpawnPoints" unique_id=1172639756]
+position = Vector2(-533, 7)
+
+[node name="Marker2D127" type="Marker2D" parent="SpawnPoints" unique_id=975633908]
+position = Vector2(-288, -3)
+
+[node name="Marker2D128" type="Marker2D" parent="SpawnPoints" unique_id=1963907027]
+position = Vector2(-46, 4)
+
+[node name="Marker2D129" type="Marker2D" parent="SpawnPoints" unique_id=822441096]
+position = Vector2(161, 7)
+
+[node name="Marker2D130" type="Marker2D" parent="SpawnPoints" unique_id=1950825498]
+position = Vector2(416, 4)
+
+[node name="Marker2D131" type="Marker2D" parent="SpawnPoints" unique_id=484573018]
+position = Vector2(530, -358)
+
+[node name="Marker2D132" type="Marker2D" parent="SpawnPoints" unique_id=1235507776]
+position = Vector2(1224, -410)
+
+[node name="Marker2D133" type="Marker2D" parent="SpawnPoints" unique_id=630016682]
+position = Vector2(1431, 722)
+
+[node name="Marker2D134" type="Marker2D" parent="SpawnPoints" unique_id=764554891]
+position = Vector2(-233, 836)
+
+[node name="Marker2D135" type="Marker2D" parent="SpawnPoints" unique_id=1817438960]
+position = Vector2(-834, -541)
+
+[node name="Marker2D136" type="Marker2D" parent="SpawnPoints" unique_id=1459209542]
+position = Vector2(-88, -589)
+
+[node name="Marker2D137" type="Marker2D" parent="SpawnPoints" unique_id=1955674017]
+position = Vector2(-243, -893)
+
+[node name="Marker2D138" type="Marker2D" parent="SpawnPoints" unique_id=137373534]
+position = Vector2(-60, -827)
+
+[node name="Marker2D139" type="Marker2D" parent="SpawnPoints" unique_id=236833646]
+position = Vector2(154, -761)
+
+[node name="Marker2D140" type="Marker2D" parent="SpawnPoints" unique_id=1976295236]
+position = Vector2(703, -723)
+
+[node name="Marker2D141" type="Marker2D" parent="SpawnPoints" unique_id=572472057]
+position = Vector2(741, -112)
+
+[node name="Marker2D142" type="Marker2D" parent="SpawnPoints" unique_id=406006419]
+position = Vector2(603, 16)
+
+[node name="Marker2D143" type="Marker2D" parent="SpawnPoints" unique_id=1058722092]
+position = Vector2(1180, 6)
+
+[node name="Marker2D144" type="Marker2D" parent="SpawnPoints" unique_id=2034757366]
+position = Vector2(1228, -142)
+
+[node name="Marker2D145" type="Marker2D" parent="SpawnPoints" unique_id=1161944126]
+position = Vector2(1404, 390)
+
+[node name="Marker2D146" type="Marker2D" parent="SpawnPoints" unique_id=956860296]
+position = Vector2(789, 635)
+
 [node name="Marker2D28" type="Marker2D" parent="SpawnPoints" unique_id=1627959636]
-position = Vector2(-626, 733)
+position = Vector2(-716, 678)
 
 [node name="Marker2D27" type="Marker2D" parent="SpawnPoints" unique_id=1548106599]
-position = Vector2(1193, 377)
+position = Vector2(986, 324)
 
 [node name="Marker2D26" type="Marker2D" parent="SpawnPoints" unique_id=847213973]
 position = Vector2(768, 519)
@@ -142,40 +402,40 @@ position = Vector2(768, 519)
 position = Vector2(572, 684)
 
 [node name="Marker2D24" type="Marker2D" parent="SpawnPoints" unique_id=1434061498]
-position = Vector2(506, -286)
+position = Vector2(562, -195)
 
 [node name="Marker2D23" type="Marker2D" parent="SpawnPoints" unique_id=186601321]
-position = Vector2(203, -545)
+position = Vector2(296, -540)
 
 [node name="Marker2D22" type="Marker2D" parent="SpawnPoints" unique_id=1064420156]
-position = Vector2(147, -258)
+position = Vector2(109, -363)
 
 [node name="Marker2D21" type="Marker2D" parent="SpawnPoints" unique_id=33955486]
 position = Vector2(-157, -717)
 
 [node name="Marker2D20" type="Marker2D" parent="SpawnPoints" unique_id=1210664958]
-position = Vector2(-730, -769)
+position = Vector2(-781, -786)
 
 [node name="Marker2D19" type="Marker2D" parent="SpawnPoints" unique_id=1654429147]
 position = Vector2(-636, -423)
 
 [node name="Marker2D18" type="Marker2D" parent="SpawnPoints" unique_id=851856269]
-position = Vector2(-261, -372)
+position = Vector2(-391, -315)
 
 [node name="Marker2D17" type="Marker2D" parent="SpawnPoints" unique_id=1459823167]
-position = Vector2(-443, -148)
+position = Vector2(-379, -208)
 
 [node name="Marker2D16" type="Marker2D" parent="SpawnPoints" unique_id=401640642]
 position = Vector2(-761, -120)
 
 [node name="Marker2D15" type="Marker2D" parent="SpawnPoints" unique_id=619370611]
-position = Vector2(341, 513)
+position = Vector2(297, 453)
 
 [node name="Marker2D14" type="Marker2D" parent="SpawnPoints" unique_id=2060336674]
-position = Vector2(224, 715)
+position = Vector2(294, 675)
 
 [node name="Marker2D13" type="Marker2D" parent="SpawnPoints" unique_id=744753012]
-position = Vector2(-210, 341)
+position = Vector2(-140, 310)
 
 [node name="Marker2D12" type="Marker2D" parent="SpawnPoints" unique_id=1093009521]
 position = Vector2(296, -132)
@@ -184,19 +444,19 @@ position = Vector2(296, -132)
 position = Vector2(497, -29)
 
 [node name="Marker2D10" type="Marker2D" parent="SpawnPoints" unique_id=1379557680]
-position = Vector2(-17, 168)
+position = Vector2(-42, 127)
 
 [node name="Marker2D9" type="Marker2D" parent="SpawnPoints" unique_id=15956781]
-position = Vector2(-142, -56)
+position = Vector2(-163, -125)
 
 [node name="Marker2D8" type="Marker2D" parent="SpawnPoints" unique_id=2025774304]
-position = Vector2(97, -8)
+position = Vector2(115, -94)
 
 [node name="Marker2D7" type="Marker2D" parent="SpawnPoints" unique_id=495618332]
 position = Vector2(-219, 139)
 
 [node name="Marker2D6" type="Marker2D" parent="SpawnPoints" unique_id=767965712]
-position = Vector2(-421, 199)
+position = Vector2(-434, 139)
 
 [node name="Marker2D5" type="Marker2D" parent="SpawnPoints" unique_id=1746442954]
 position = Vector2(-641, 169)
@@ -205,10 +465,10 @@ position = Vector2(-641, 169)
 position = Vector2(-784, 381)
 
 [node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=188820962]
-position = Vector2(-547, 265)
+position = Vector2(-566, 136)
 
 [node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=1301632930]
-position = Vector2(-349, 501)
+position = Vector2(-457, 568)
 
 [node name="Marker2D45" type="Marker2D" parent="SpawnPoints" unique_id=2047863766]
 position = Vector2(302, 301)
@@ -217,34 +477,34 @@ position = Vector2(302, 301)
 position = Vector2(472, 315)
 
 [node name="Marker2D47" type="Marker2D" parent="SpawnPoints" unique_id=793014480]
-position = Vector2(116, 468)
+position = Vector2(96, 475)
 
 [node name="Marker2D48" type="Marker2D" parent="SpawnPoints" unique_id=514835505]
 position = Vector2(-110, 586)
 
 [node name="Marker2D49" type="Marker2D" parent="SpawnPoints" unique_id=1874932712]
-position = Vector2(-424, 727)
+position = Vector2(-344, 689)
 
 [node name="Marker2D50" type="Marker2D" parent="SpawnPoints" unique_id=387734785]
-position = Vector2(816, 779)
+position = Vector2(729, 761)
 
 [node name="Marker2D51" type="Marker2D" parent="SpawnPoints" unique_id=1530820246]
 position = Vector2(957, 621)
 
 [node name="Marker2D52" type="Marker2D" parent="SpawnPoints" unique_id=1088610591]
-position = Vector2(1212, 560)
+position = Vector2(1270, 607)
 
 [node name="Marker2D53" type="Marker2D" parent="SpawnPoints" unique_id=119172158]
-position = Vector2(1161, 161)
+position = Vector2(997, 201)
 
 [node name="Marker2D54" type="Marker2D" parent="SpawnPoints" unique_id=2039009084]
-position = Vector2(721, -1)
+position = Vector2(775, 28)
 
 [node name="Marker2D55" type="Marker2D" parent="SpawnPoints" unique_id=1398693008]
 position = Vector2(701, -294)
 
 [node name="Marker2D56" type="Marker2D" parent="SpawnPoints" unique_id=568339548]
-position = Vector2(-108, -238)
+position = Vector2(-169, -273)
 
 [node name="Marker2D57" type="Marker2D" parent="SpawnPoints" unique_id=1207648335]
 position = Vector2(-2, -476)
@@ -256,31 +516,31 @@ position = Vector2(529, 100)
 position = Vector2(256, 156)
 
 [node name="Marker2D60" type="Marker2D" parent="SpawnPoints" unique_id=1238955118]
-position = Vector2(413, 217)
+position = Vector2(527, 223)
 
 [node name="Marker2D61" type="Marker2D" parent="SpawnPoints" unique_id=1484408132]
-position = Vector2(79, 328)
+position = Vector2(-51, 442)
 
 [node name="Marker2D62" type="Marker2D" parent="SpawnPoints" unique_id=789299175]
-position = Vector2(574, 308)
+position = Vector2(683, 326)
 
 [node name="Marker2D63" type="Marker2D" parent="SpawnPoints" unique_id=1347884707]
 position = Vector2(549, 460)
 
 [node name="Marker2D64" type="Marker2D" parent="SpawnPoints" unique_id=1173250690]
-position = Vector2(-563, -227)
+position = Vector2(-560, -94)
 
 [node name="Marker2D65" type="Marker2D" parent="SpawnPoints" unique_id=232152199]
 position = Vector2(-406, -444)
 
 [node name="Marker2D66" type="Marker2D" parent="SpawnPoints" unique_id=487273379]
-position = Vector2(-739, -577)
+position = Vector2(-591, -590)
 
 [node name="Marker2D67" type="Marker2D" parent="SpawnPoints" unique_id=661764722]
-position = Vector2(-539, -843)
+position = Vector2(-669, -907)
 
 [node name="Marker2D68" type="Marker2D" parent="SpawnPoints" unique_id=887886841]
-position = Vector2(-236, -880)
+position = Vector2(-200, -764)
 
 [node name="Marker2D69" type="Marker2D" parent="SpawnPoints" unique_id=715535983]
 position = Vector2(67, -865)
@@ -289,7 +549,7 @@ position = Vector2(67, -865)
 position = Vector2(89, -658)
 
 [node name="Marker2D71" type="Marker2D" parent="SpawnPoints" unique_id=794528397]
-position = Vector2(363, -658)
+position = Vector2(418, -753)
 
 [node name="Marker2D72" type="Marker2D" parent="SpawnPoints" unique_id=1497700962]
 position = Vector2(363, -399)
@@ -298,7 +558,7 @@ position = Vector2(363, -399)
 position = Vector2(544, -507)
 
 [node name="Marker2D74" type="Marker2D" parent="SpawnPoints" unique_id=1164255807]
-position = Vector2(96, 97)
+position = Vector2(51, 258)
 
 [node name="Marker2D75" type="Marker2D" parent="SpawnPoints" unique_id=247756284]
 position = Vector2(225, 59)
@@ -337,10 +597,10 @@ position = Vector2(484, -832)
 position = Vector2(705, -825)
 
 [node name="Marker2D87" type="Marker2D" parent="SpawnPoints" unique_id=779855261]
-position = Vector2(1099, -839)
+position = Vector2(1354, -891)
 
 [node name="Marker2D88" type="Marker2D" parent="SpawnPoints" unique_id=902951127]
-position = Vector2(1113, -307)
+position = Vector2(1143, -313)
 
 [node name="Marker2D89" type="Marker2D" parent="SpawnPoints" unique_id=973251327]
 position = Vector2(519, 843)
@@ -352,16 +612,16 @@ position = Vector2(177, 860)
 position = Vector2(-110, 853)
 
 [node name="Marker2D92" type="Marker2D" parent="SpawnPoints" unique_id=1388895065]
-position = Vector2(-390, 863)
+position = Vector2(-365, 894)
 
 [node name="Marker2D93" type="Marker2D" parent="SpawnPoints" unique_id=653481011]
-position = Vector2(-677, 880)
+position = Vector2(-798, 900)
 
 [node name="Marker2D94" type="Marker2D" parent="SpawnPoints" unique_id=2014002361]
-position = Vector2(-784, 780)
+position = Vector2(-833, 761)
 
 [node name="Marker2D95" type="Marker2D" parent="SpawnPoints" unique_id=298774138]
-position = Vector2(-763, 604)
+position = Vector2(-822, 579)
 
 [node name="Marker2D96" type="Marker2D" parent="SpawnPoints" unique_id=1776439083]
 position = Vector2(-787, 193)
@@ -370,16 +630,16 @@ position = Vector2(-787, 193)
 position = Vector2(-766, 38)
 
 [node name="Marker2D98" type="Marker2D" parent="SpawnPoints" unique_id=1125650348]
-position = Vector2(-583, 10)
+position = Vector2(-549, -314)
 
 [node name="Marker2D99" type="Marker2D" parent="SpawnPoints" unique_id=1758265708]
-position = Vector2(-334, 27)
+position = Vector2(-369, -109)
 
 [node name="Marker2D100" type="Marker2D" parent="SpawnPoints" unique_id=415528747]
 position = Vector2(-807, -325)
 
 [node name="Marker2D101" type="Marker2D" parent="SpawnPoints" unique_id=1631416488]
-position = Vector2(-341, -253)
+position = Vector2(-263, -321)
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=971247218]
 autostart = true
