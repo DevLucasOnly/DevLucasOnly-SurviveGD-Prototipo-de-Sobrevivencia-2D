@@ -70,7 +70,6 @@ texture = ExtResource("3_q5onr")
 position = Vector2(279, 7)
 
 [node name="ColisãoMapa" type="StaticBody2D" parent="." unique_id=1902838922]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColisãoMapa" unique_id=1273372504]
 position = Vector2(-112.5, -182.5)

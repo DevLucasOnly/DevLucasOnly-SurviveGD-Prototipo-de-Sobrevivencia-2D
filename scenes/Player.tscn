@@ -428,6 +428,7 @@ fill_to = Vector2(0.726087, 0.54347825)
 
 [node name="Player" type="CharacterBody2D" unique_id=1449373304 groups=["jogador"]]
 scale = Vector2(3, 3)
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_i0ldb")
 speed = 80.0
