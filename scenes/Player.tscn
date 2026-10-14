@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0rfjbdxoxp8x" path="res://assets/Player/Player para NORTE.png" id="3_cw2d6"]
 [ext_resource type="Texture2D" uid="uid://bxprvsbjt4tmb" path="res://assets/Player/Player para SUL.png" id="3_khinc"]
 [ext_resource type="Texture2D" uid="uid://ccaxw0igjf3tt" path="res://assets/Player/Player para OESTE.png" id="4_bruh7"]
+[ext_resource type="Texture2D" uid="uid://dojy6y2je23cp" path="res://assets/Player/Player para SUDOESTE.png" id="4_lkdrv"]
 [ext_resource type="AudioStream" uid="uid://cqim418r08i82" path="res://audio/Passos_Player_Concreto_Loop.ogg" id="4_mdl7e"]
 [ext_resource type="Texture2D" uid="uid://8tsf3jcne7dj" path="res://assets/Player/Player para LESTE.png" id="5_6eyey"]
 [ext_resource type="AudioStream" uid="uid://dbxee3kgsq5pu" path="res://audio/Dano_Player.ogg" id="5_qu4a1"]
@@ -15,6 +16,10 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7iby"]
 atlas = ExtResource("3_khinc")
+region = Rect2(0, 0, 396, 793)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq1a3"]
+atlas = ExtResource("4_lkdrv")
 region = Rect2(0, 0, 396, 793)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfy4j"]
@@ -51,6 +56,22 @@ region = Rect2(1188, 0, 396, 793)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebwui"]
 atlas = ExtResource("3_khinc")
+region = Rect2(1584, 0, 396, 793)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu4mg"]
+atlas = ExtResource("4_lkdrv")
+region = Rect2(396, 0, 396, 793)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk6la"]
+atlas = ExtResource("4_lkdrv")
+region = Rect2(792, 0, 396, 793)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrxk4"]
+atlas = ExtResource("4_lkdrv")
+region = Rect2(1188, 0, 396, 793)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg1p0"]
+atlas = ExtResource("4_lkdrv")
 region = Rect2(1584, 0, 396, 793)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8lor"]
@@ -148,7 +169,10 @@ animations = [{
 "name": &"idle_down",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq1a3")
+}],
 "loop": 1,
 "name": &"idle_down_left",
 "speed": 5.0
@@ -215,7 +239,19 @@ animations = [{
 "name": &"walk_down",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu4mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk6la")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrxk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg1p0")
+}],
 "loop": 1,
 "name": &"walk_down_left",
 "speed": 5.0
@@ -674,7 +710,7 @@ scale = Vector2(0.008, 0.0077831023)
 sprite_frames = SubResource("SpriteFrames_snp6e")
 animation = &"walk_up_right"
 frame = 2
-frame_progress = 0.87426364
+frame_progress = 0.425902
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=691460397]
 visible = false
