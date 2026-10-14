@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dxouhy3fgo6if" path="res://scenes/spawner_inimigos.tscn" id="10_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://b37ssitr6spcg" path="res://scenes/game_over.tscn" id="10_w7kh3"]
 [ext_resource type="Script" uid="uid://btqofd0hugias" path="res://scripts/tempo.gd" id="12_q5onr"]
+[ext_resource type="AudioStream" uid="uid://cwjdsncs3n2mw" path="res://audio/Ultimo_Humano_Gameplay_Loop.ogg" id="13_jhx03"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7kh3"]
 texture = ExtResource("3_4mrxx")
@@ -6664,6 +6665,7 @@ shape = SubResource("RectangleShape2D_13mlu")
 
 [node name="Antidoto" parent="." unique_id=1307615855 instance=ExtResource("2_rwgxs")]
 position = Vector2(279, -28)
+cura_valor = 30.0
 
 [node name="HUD" parent="." unique_id=913610252 instance=ExtResource("4_k0juu")]
 
@@ -7024,6 +7026,11 @@ inimigo_cena = ExtResource("6_qfnet")
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=84258641]
 color = Color(0.25565878, 0.25565878, 0.25565878, 1)
 script = ExtResource("12_q5onr")
+
+[node name="MusicaFundo" type="AudioStreamPlayer" parent="." unique_id=344313682]
+stream = ExtResource("13_jhx03")
+autoplay = true
+bus = &"BGM"
 
 [connection signal="focus_entered" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_entered"]
 [connection signal="focus_exited" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_exited"]

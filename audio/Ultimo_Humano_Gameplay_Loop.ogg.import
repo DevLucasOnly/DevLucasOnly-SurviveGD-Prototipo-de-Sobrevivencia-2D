@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Ultimo_Humano_Gameplay_Loop.ogg-cbd3cdb3ad319
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
