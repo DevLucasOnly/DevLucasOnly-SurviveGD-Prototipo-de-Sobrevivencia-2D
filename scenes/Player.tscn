@@ -418,5 +418,5 @@ stream = ExtResource("5_qu4a1")
 
 [node name="Sprite2D" type="Sprite2D" parent="PivotApontador" unique_id=446800566]
 position = Vector2(5, 0)
-scale = Vector2(0.001, 0.001)
+scale = Vector2(0.003, 0.003)
 texture = ExtResource("6_70d11")

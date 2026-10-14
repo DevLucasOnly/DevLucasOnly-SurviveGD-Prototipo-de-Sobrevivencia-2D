@@ -17,6 +17,7 @@ var invulneravel: bool = false
 @onready var vfx_dano: GPUParticles2D = $VFXDano
 @onready var sfx_andar: AudioStreamPlayer2D = $SfxAndar
 @onready var sfx_dano_jogador: AudioStreamPlayer2D = $SfxDano
+@onready var pivot_apontador: Node2D = $PivotApontador
 
 var shake_intensity: float = 0.0
 const SHAKE_DECAY: float = 10.0
@@ -30,6 +31,7 @@ func _input(event: InputEvent) -> void:
 		atirar()
 
 func _process(delta: float) -> void:
+	atualizar_apontador()
 	if shake_intensity > 0:
 		shake_intensity = lerpf(shake_intensity, 0.0, SHAKE_DECAY * delta)
 		camera.offset = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * shake_intensity
@@ -149,3 +151,29 @@ func _acionar_efeito_invulnerabilidade() -> void:
 	tween.kill()
 	sprite.modulate.a = 1.0
 	invulneravel = false
+
+func atualizar_apontador() -> void:
+	# Altera a busca para o grupo correto
+	var itens_alvo = get_tree().get_nodes_in_group("antidoto")
+	
+	if itens_alvo.is_empty():
+		pivot_apontador.visible = false
+		return
+		
+	var alvo_mais_proximo: Node2D = null
+	var menor_distancia: float = INF
+	
+	for alvo in itens_alvo:
+		if not is_instance_valid(alvo) or alvo.is_queued_for_deletion():
+			continue
+			
+		var distancia = global_position.distance_to(alvo.global_position)
+		if distancia < menor_distancia:
+			menor_distancia = distancia
+			alvo_mais_proximo = alvo
+			
+	if alvo_mais_proximo:
+		pivot_apontador.visible = true
+		pivot_apontador.look_at(alvo_mais_proximo.global_position)
+	else:
+		pivot_apontador.visible = false

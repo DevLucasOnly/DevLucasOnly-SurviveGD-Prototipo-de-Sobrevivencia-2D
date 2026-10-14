@@ -4,6 +4,7 @@ extends Area2D
 @onready var sfx_coletar: AudioStreamPlayer2D = $SfxColetar
 
 func _ready() -> void:
+	add_to_group("antidoto")
 	sfx_coletar.finished.connect(queue_free)
 
 func _on_body_entered(body: Node2D) -> void:
