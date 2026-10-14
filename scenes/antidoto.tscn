@@ -18,6 +18,7 @@ fill_from = Vector2(0.5043478, 0.5217391)
 fill_to = Vector2(0.5521739, 0.5217391)
 
 [node name="Antidoto" type="Area2D" unique_id=1307615855]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_io8bx")
 cura_valor = null
 

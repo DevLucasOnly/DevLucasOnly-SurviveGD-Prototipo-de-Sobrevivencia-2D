@@ -427,6 +427,7 @@ fill_from = Vector2(0.4869565, 0.5304348)
 fill_to = Vector2(0.726087, 0.54347825)
 
 [node name="Player" type="CharacterBody2D" unique_id=1449373304 groups=["jogador"]]
+scale = Vector2(3, 3)
 motion_mode = 1
 script = ExtResource("1_i0ldb")
 speed = 80.0
@@ -443,7 +444,7 @@ frame_progress = 0.17390276
 shape = SubResource("RectangleShape2D_70d11")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2015322001]
-zoom = Vector2(2, 2)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 

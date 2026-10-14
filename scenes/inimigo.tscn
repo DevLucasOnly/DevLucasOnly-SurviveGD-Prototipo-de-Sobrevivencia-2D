@@ -97,6 +97,7 @@ _data = {
 radius = 6.0
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1514004947]
+scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("1_61lki")
 

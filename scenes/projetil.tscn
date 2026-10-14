@@ -29,6 +29,7 @@ tags = {
 }
 
 [node name="Projetil" type="Area2D" unique_id=1582131438]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ri8ot")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=555198599]
