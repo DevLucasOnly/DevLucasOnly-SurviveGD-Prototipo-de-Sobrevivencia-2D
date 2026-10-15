@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c5rfpd4exgo5t" path="res://assets/Player/Seta verde com cápsula de antídoto.png" id="6_70d11"]
 [ext_resource type="Texture2D" uid="uid://bblvwqjwbltdp" path="res://assets/Player/Player para NOROESTE.png" id="7_d3wef"]
 [ext_resource type="Texture2D" uid="uid://cx8n31ow387ib" path="res://assets/Player/Player para NORDESTE.png" id="8_o4126"]
+[ext_resource type="Texture2D" uid="uid://bhlgub1axcoir" path="res://assets/Player/Gota de sangue pixelada.png" id="11_p7iby"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7iby"]
 atlas = ExtResource("3_khinc")
@@ -412,8 +413,8 @@ initial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
 damping_min = 100.00001
 damping_max = 100.00001
-scale_min = 3.0
-scale_max = 3.0
+scale_min = 0.01
+scale_max = 0.03
 color = Color(0.35251984, 0.037441414, 4.813075e-08, 1)
 
 [sub_resource type="Gradient" id="Gradient_mdl7e"]
@@ -467,6 +468,7 @@ one_shot = true
 
 [node name="VFXDano" type="GPUParticles2D" parent="." unique_id=722232803]
 emitting = false
+texture = ExtResource("11_p7iby")
 lifetime = 0.3
 one_shot = true
 explosiveness = 1.0
