@@ -103,7 +103,8 @@ collision_mask = 11
 motion_mode = 1
 script = ExtResource("1_61lki")
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1996568289]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1996568289 groups=["player"]]
+collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1493889102]
 position = Vector2(0, 1)

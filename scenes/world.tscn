@@ -57,6 +57,17 @@ region = Rect2(233.90091, 78.05789, 1303.6995, 310.64218)
 atlas = ExtResource("9_7r4gi")
 region = Rect2(235.56635, 490.43817, 1303.3416, 312.78522)
 
+[sub_resource type="Gradient" id="Gradient_q5onr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_snp6e"]
+gradient = SubResource("Gradient_q5onr")
+width = 144
+height = 144
+fill = 1
+fill_from = Vector2(0.5304348, 0.49130434)
+fill_to = Vector2(0.16956522, 0.1826087)
+
 [node name="World" type="Node2D" unique_id=2064019119]
 script = ExtResource("1_71j4m")
 antidoto_cena = ExtResource("2_rwgxs")
@@ -697,6 +708,123 @@ script = ExtResource("12_q5onr")
 stream = ExtResource("13_jhx03")
 autoplay = true
 bus = &"BGM"
+
+[node name="Iluminacao" type="Node2D" parent="." unique_id=1385493968]
+
+[node name="PointLight2D" type="PointLight2D" parent="Iluminacao" unique_id=2133197623]
+position = Vector2(1477, 69)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Iluminacao" unique_id=1082793831]
+position = Vector2(1476, -108)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Iluminacao" unique_id=1009087903]
+position = Vector2(583, -96)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Iluminacao" unique_id=2004709373]
+position = Vector2(1393, -1002)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D5" type="PointLight2D" parent="Iluminacao" unique_id=917110731]
+position = Vector2(407, -1015)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D6" type="PointLight2D" parent="Iluminacao" unique_id=1746176851]
+position = Vector2(198, -1019)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D7" type="PointLight2D" parent="Iluminacao" unique_id=1104828344]
+position = Vector2(224, -666)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D8" type="PointLight2D" parent="Iluminacao" unique_id=1915850481]
+position = Vector2(361, -663)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D9" type="PointLight2D" parent="Iluminacao" unique_id=665185961]
+position = Vector2(-801, -1016)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D10" type="PointLight2D" parent="Iluminacao" unique_id=1529460442]
+position = Vector2(-887, -103)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D11" type="PointLight2D" parent="Iluminacao" unique_id=1378825703]
+position = Vector2(-886, 65)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D12" type="PointLight2D" parent="Iluminacao" unique_id=121582132]
+position = Vector2(-834, 943)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D13" type="PointLight2D" parent="Iluminacao" unique_id=1513442484]
+position = Vector2(217, 647)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D14" type="PointLight2D" parent="Iluminacao" unique_id=1221734101]
+position = Vector2(373, 651)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D15" type="PointLight2D" parent="Iluminacao" unique_id=1543305990]
+position = Vector2(219, 927)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D16" type="PointLight2D" parent="Iluminacao" unique_id=1456510116]
+position = Vector2(378, 925)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D17" type="PointLight2D" parent="Iluminacao" unique_id=463773977]
+position = Vector2(767, 281)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D18" type="PointLight2D" parent="Iluminacao" unique_id=1641667893]
+position = Vector2(958, 283)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D19" type="PointLight2D" parent="Iluminacao" unique_id=1125505432]
+position = Vector2(1171, 281)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D20" type="PointLight2D" parent="Iluminacao" unique_id=490454390]
+position = Vector2(1426, 941)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D21" type="PointLight2D" parent="Iluminacao" unique_id=980696555]
+position = Vector2(-503, -185)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D22" type="PointLight2D" parent="Iluminacao" unique_id=371565808]
+position = Vector2(-291, -187)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
+
+[node name="PointLight2D23" type="PointLight2D" parent="Iluminacao" unique_id=1538129280]
+position = Vector2(295, 1)
+color = Color(0.9882353, 0.9137255, 0.68235296, 1)
+texture = SubResource("GradientTexture2D_snp6e")
 
 [connection signal="focus_entered" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_entered"]
 [connection signal="focus_exited" from="PauseMenu/VBoxContainer/BtnContinuar" to="PauseMenu" method="_on_btn_continuar_mouse_exited"]
