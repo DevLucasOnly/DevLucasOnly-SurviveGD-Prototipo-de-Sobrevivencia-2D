@@ -66,6 +66,7 @@ func piscar_dano() -> void:
 			sprite.modulate = Color(1, 1, 1)
 
 func morrer() -> void:
+	GameManager.registrar_morte_inimigo()
 	queue_free()
 
 func _on_hitbox_body_entered(body: Node2D) -> void:

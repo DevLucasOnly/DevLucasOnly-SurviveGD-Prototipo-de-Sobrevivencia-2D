@@ -13,6 +13,11 @@ var humanidade_atual: float = 100.0
 var tempo_sobrevivencia: float = 0.0
 var taxa_decaimento: float = 4.0 
 
+# --- Variáveis de Pontuação ---
+var inimigos_mortos: int = 0
+var pontuacao_atual: int = 0
+var high_score: int = 0
+
 # --- Variáveis de Dificuldade ---
 var multiplicador_dificuldade: float = 1.0
 var inimigo_vida_bonus: int = 0
@@ -23,129 +28,138 @@ var multiplicador_dano_jogador: int = 1
 var vida_maxima: int = 3
 var vida_atual: int = 3
 
-var high_score: int = 0
 var jogo_ativo: bool = true 
 
 var bgm_player: AudioStreamPlayer
 
 func _ready() -> void:
-	humanidade_atual = humanidade_maxima
-	vida_atual = vida_maxima
-	carregar_high_score()
-	
-	# Instancia e configura a música de fundo dinamicamente
-	bgm_player = AudioStreamPlayer.new()
-	add_child(bgm_player)
-	bgm_player.bus = "BGM"
-	bgm_player.stream = preload("res://audio/Ultimo_Sinal_SurviveGD.ogg")
-	
-	_carregar_configuracoes_globais()
+    humanidade_atual = humanidade_maxima
+    vida_atual = vida_maxima
+    carregar_high_score()
+    
+    # Instancia e configura a música de fundo dinamicamente
+    bgm_player = AudioStreamPlayer.new()
+    add_child(bgm_player)
+    bgm_player.bus = "BGM"
+    bgm_player.stream = preload("res://audio/Ultimo_Sinal_SurviveGD.ogg")
+    
+    _carregar_configuracoes_globais()
 
 func _process(delta: float) -> void:
-	if not jogo_ativo:
-		return
+    if not jogo_ativo:
+        return
 
-	if humanidade_atual > 0.0:
-		humanidade_atual -= taxa_decaimento * delta
-		humanidade_alterada.emit(humanidade_atual)
-		
-		tempo_sobrevivencia += delta
-		tempo_atualizado.emit(int(tempo_sobrevivencia))
-		
-		if humanidade_atual <= 0.0:
-			humanidade_atual = 0.0
-			encerrar_jogo()
+    if humanidade_atual > 0.0:
+        humanidade_atual -= taxa_decaimento * delta
+        humanidade_alterada.emit(humanidade_atual)
+        
+        tempo_sobrevivencia += delta
+        tempo_atualizado.emit(int(tempo_sobrevivencia))
+        
+        if humanidade_atual <= 0.0:
+            humanidade_atual = 0.0
+            encerrar_jogo()
 
 func aplicar_dano_jogador(quantidade: int) -> void:
-	if not jogo_ativo:
-		return
-		
-	vida_atual -= quantidade
-	vida_alterada.emit(vida_atual)
-	
-	if vida_atual <= 0:
-		vida_atual = 0
-		encerrar_jogo()
+    if not jogo_ativo:
+        return
+        
+    vida_atual -= quantidade
+    vida_alterada.emit(vida_atual)
+    
+    if vida_atual <= 0:
+        vida_atual = 0
+        encerrar_jogo()
+
+func registrar_morte_inimigo() -> void:
+    if jogo_ativo:
+        inimigos_mortos += 1
 
 func encerrar_jogo() -> void:
-	jogo_ativo = false
-	set_process(false)
-	
-	var tempo_inteiro = int(tempo_sobrevivencia)
-	if tempo_inteiro > high_score:
-		high_score = tempo_inteiro
-		salvar_high_score()
-		
-	print("[DEBUG] GameManager emitiu game_over")
-	game_over.emit()
+    jogo_ativo = false
+    set_process(false)
+    
+    # Cálculo da pontuação final
+    var pontos_tempo = int(tempo_sobrevivencia) * 10
+    var pontos_inimigos = inimigos_mortos * 100
+    pontuacao_atual = int((pontos_tempo + pontos_inimigos) * multiplicador_dificuldade)
+    
+    if pontuacao_atual > high_score:
+        high_score = pontuacao_atual
+        salvar_high_score()
+        
+    print("[DEBUG] GameManager emitiu game_over. Pontuação Final: ", pontuacao_atual)
+    game_over.emit()
 
 func restaurar_humanidade(quantidade: float) -> void:
-	if jogo_ativo and humanidade_atual > 0.0:
-		humanidade_atual = clamp(humanidade_atual + quantidade, 0.0, humanidade_maxima)
-		humanidade_alterada.emit(humanidade_atual)
+    if jogo_ativo and humanidade_atual > 0.0:
+        humanidade_atual = clamp(humanidade_atual + quantidade, 0.0, humanidade_maxima)
+        humanidade_alterada.emit(humanidade_atual)
 
 func resetar_estado() -> void:
-	humanidade_atual = humanidade_maxima
-	vida_atual = vida_maxima
-	tempo_sobrevivencia = 0.0
-	jogo_ativo = true
-	set_process(true)
-	
-	# Recarrega as configurações ao resetar para garantir que mudanças no menu sejam aplicadas
-	_carregar_configuracoes_globais()
+    humanidade_atual = humanidade_maxima
+    vida_atual = vida_maxima
+    tempo_sobrevivencia = 0.0
+    inimigos_mortos = 0
+    pontuacao_atual = 0
+    jogo_ativo = true
+    set_process(true)
+    
+    # Recarrega as configurações ao resetar para garantir que mudanças no menu sejam aplicadas
+    _carregar_configuracoes_globais()
 
 func salvar_high_score() -> void:
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_32(high_score)
-		file.close()
-		print("[DEBUG] High Score salvo: ", high_score)
+    var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+    if file:
+        file.store_32(high_score)
+        file.close()
+        print("[DEBUG] High Score salvo: ", high_score)
 
 func carregar_high_score() -> void:
-	if FileAccess.file_exists(SAVE_PATH):
-		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-		if file:
-			high_score = file.get_32()
-			file.close()
-			print("[DEBUG] High Score carregado: ", high_score)
+    if FileAccess.file_exists(SAVE_PATH):
+        var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+        if file:
+            high_score = file.get_32()
+            file.close()
+            print("[DEBUG] High Score carregado: ", high_score)
 
 func _carregar_configuracoes_globais() -> void:
-	var config = ConfigFile.new()
-	if config.load(ARQUIVO_CONFIG) == OK:
-		# Aplica os volumes guardados
-		var master_bus = AudioServer.get_bus_index("Master")
-		var bgm_bus = AudioServer.get_bus_index("BGM")
-		AudioServer.set_bus_volume_db(master_bus, linear_to_db(config.get_value("Audio", "master", 0.8)))
-		AudioServer.set_bus_volume_db(bgm_bus, linear_to_db(config.get_value("Audio", "bgm", 0.8)))
-		
-		# Aplica as configurações de ecrã inteiro
-		var modo_fullscreen = config.get_value("Video", "fullscreen", false)
-		if modo_fullscreen:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		
-		# Aplica as configurações de dificuldade
-		var diff = config.get_value("Jogo", "dificuldade", 1)
-		match diff:
-			0: # Fácil
-				multiplicador_dificuldade = 0.8
-				inimigo_vida_bonus = 0
-				limite_spawn_minimo = 0.8
-				multiplicador_dano_jogador = 1
-			1: # Normal
-				multiplicador_dificuldade = 1.0
-				inimigo_vida_bonus = 0
-				limite_spawn_minimo = 0.5
-				multiplicador_dano_jogador = 1
-			2: # Difícil
-				multiplicador_dificuldade = 1.5
-				inimigo_vida_bonus = 2
-				limite_spawn_minimo = 0.2
-				multiplicador_dano_jogador = 2
+    var config = ConfigFile.new()
+    if config.load(ARQUIVO_CONFIG) == OK:
+        # Aplica os volumes guardados
+        var master_bus = AudioServer.get_bus_index("Master")
+        var bgm_bus = AudioServer.get_bus_index("BGM")
+        AudioServer.set_bus_volume_db(master_bus, linear_to_db(config.get_value("Audio", "master", 0.8)))
+        AudioServer.set_bus_volume_db(bgm_bus, linear_to_db(config.get_value("Audio", "bgm", 0.8)))
+        
+        # Aplica as configurações de ecrã inteiro
+        var modo_fullscreen = config.get_value("Video", "fullscreen", false)
+        if modo_fullscreen:
+            DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+        
+        # Aplica as configurações de dificuldade
+        var diff = config.get_value("Jogo", "dificuldade", 1)
+        match diff:
+            0: # Fácil
+                multiplicador_dificuldade = 0.8
+                inimigo_vida_bonus = 0
+                limite_spawn_minimo = 0.8
+                multiplicador_dano_jogador = 1
+            1: # Normal
+                multiplicador_dificuldade = 1.0
+                inimigo_vida_bonus = 0
+                limite_spawn_minimo = 0.5
+                multiplicador_dano_jogador = 1
+            2: # Difícil
+                multiplicador_dificuldade = 1.5
+                inimigo_vida_bonus = 2
+                limite_spawn_minimo = 0.2
+                multiplicador_dano_jogador = 2
 
 func parar_musica() -> void:
-	if bgm_player and bgm_player.playing:
-		bgm_player.stop()
+    if bgm_player and bgm_player.playing:
+        bgm_player.stop()
 
 func tocar_musica() -> void:
-	if bgm_player and not bgm_player.playing:
-		bgm_player.play()
+    if bgm_player and not bgm_player.playing:
+        bgm_player.play()

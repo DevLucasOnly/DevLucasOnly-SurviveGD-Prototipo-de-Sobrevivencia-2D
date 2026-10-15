@@ -25,7 +25,7 @@ func _ready() -> void:
 func _acionar_game_over() -> void:
 	painel.show()
 	game_over_audio.play()
-	label_score.text = "SCORE ATUAL: " + str(int(GameManager.tempo_sobrevivencia))
+	label_score.text = "SCORE ATUAL: " + str(int(GameManager.pontuacao_atual))
 	label_high_score.text = "HIGH SCORE: " + str(GameManager.high_score)
 	get_tree().paused = true
 
