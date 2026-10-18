@@ -111,7 +111,10 @@ func atirar() -> void:
 
 func acionar_feedback_dano() -> void:
     shake_intensity = 15.0
-    
+    # Empurra o jogador na direção oposta ao movimento atual (ou do centro)
+    # Requer que a lógica de movimento do _physics_process aplique a velocity depois
+    velocity = -velocity.normalized() * 800.0 
+    move_and_slide()
     Engine.time_scale = 0.0
     await get_tree().create_timer(0.05, true, false, true).timeout
     Engine.time_scale = 1.0
