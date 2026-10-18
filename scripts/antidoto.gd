@@ -1,16 +1,19 @@
 extends Area2D
 
 @export var cura_valor: float = 30.0
+@onready var sfx_coletar: AudioStreamPlayer2D = $SfxColetar
 
-# Esta função será chamada automaticamente pelo sinal 'body_entered'
+func _ready() -> void:
+	add_to_group("antidoto")
+	sfx_coletar.finished.connect(queue_free)
+
 func _on_body_entered(body: Node2D) -> void:
-	# Verifica se a entidade colidida é o jogador
 	if body.name == "Player":
-		# Envia o valor da cura para o script global gerenciar
-		GameManager.restaurar_humanidade(cura_valor)
+		# Oculta o sprite e desativa a colisão imediatamente
+		$Sprite2D.hide()
+		$CollisionShape2D.set_deferred("disabled", true)
 		
-		# Opcional: print para depuração no console
+		GameManager.restaurar_humanidade(cura_valor)
 		print("Antídoto coletado. Cura enviada: ", cura_valor)
 		
-		# Remove o item da árvore de cenas e libera a memória
-		queue_free()
+		sfx_coletar.play()

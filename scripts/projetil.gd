@@ -1,9 +1,14 @@
 extends Area2D
 
+@onready var sfx_tiro: AudioStreamPlayer2D = $SfxTiro
+
 @export var speed: float = 600.0
 @export var damage: int = 1
 var direction: Vector2 = Vector2.ZERO
 
+func _ready() -> void:
+	sfx_tiro.play()
+	
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
