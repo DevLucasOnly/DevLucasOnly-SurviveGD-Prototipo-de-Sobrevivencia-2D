@@ -15,15 +15,17 @@ Protótipo de jogo de sobrevivência 2D top-down desenvolvido no Godot 4. O proj
    * Humanidade: Decaimento temporal contínuo. Restaurada via coleta de itens (Antídotos). Zera resulta em Game Over.
    * Vida Física: Sistema de acertos (HP). Reduzida ao sofrer dano. Zera resulta em Game Over.
 
-* **Combate:** Sistema de disparo de projéteis instanciados com trajetória calculada pelo vetor direcional do cursor do mouse.
+* **Combate:** Sistema de disparo de projéteis instanciados com trajetória calculada pelo vetor direcional do cursor do mouse. Partículas sem cálculo de oclusão de sombras para otimização de renderização.
 
-* **IA Inimiga:** Perseguição contínua baseada em distância vetorial, atualização direcional visual em tempo real e sistema de saúde (destruição após 3 acertos).
+* **IA Inimiga:** Perseguição vetorial baseada em distância. Implementação de limite de aproximação de colisão e cooldown de ataque para evitar sobreposição ao jogador. Escalonamento de velocidade atrelado ao tempo de sobrevivência e dificuldade global.
 
-* **Feedback de Impacto (Game Feel):** Implementação de Camera Shake, Freeze Frame (manipulação de time_scale) e Sprite Flashing (manipulação de modulate) durante o recebimento de dano.
+* **Feedback de Impacto (Game Feel):** Implementação de Camera Shake, vibração de comando, Freeze Frame (manipulação de time_scale), Sprite Flashing para invulnerabilidade e emissores de partículas (GPUParticles2D) com textura animada para impactos.
 
-* **Cenário:** Estruturação de mapas via TileMap com camadas de física (Physics Layers) para colisão rigorosa.
+* **Cenário:** Mapa estático (Sprite2D) com colisões manuais (StaticBody2D) controladas rigorosamente via Layers e Masks físicas. Implementação de ambiente escuro (CanvasModulate) e iluminação radial focal com oclusão de sombras em obstáculos geométricos (LightOccluder2D).
 
-* **Persistência de Dados:** Sistema de High Score baseado em tempo de sobrevivência, salvo e carregado localmente no disco.
+* **Persistência de Dados:**
+    * High Score: Calculado através da equação de tempo de sobrevivência, inimigos eliminados e multiplicador de dificuldade. Gravado no disco via FileAccess.
+    * Configurações: Persistência de volumes de áudio (barramentos de som) e resoluções de tela via ConfigFile.
 
 ## 🚀 Como Executar
 
@@ -48,4 +50,4 @@ Acesse o link do GitHub Pages no topo deste documento para jogar a versão mais 
 *   `/scripts/` - Arquivos GDScript isolados por nó funcional.
 
 ## 🔄 Status do Projeto
-Em desenvolvimento. Transição concluída de gráficos provisórios (formas geométricas) para pixel art definitiva, implementação base de combate finalizada e exportação web configurada. Foco atual no mapeamento de colisões de cenário e construção do cenário de mapa.
+MVP Finalizado. Ciclo de polimento concluído com a integração do mapa estático com colisões em camada, sistema de iluminação e sombras dinâmicas, refinamento vetorial do combate corpo a corpo, persistência de dados estruturada e compilação para Web. Versão estável.
